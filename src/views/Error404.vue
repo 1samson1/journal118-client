@@ -1,22 +1,18 @@
-<template>
-    <div class="contanier-fluid">
-        <div class="error">
-            <div class="mx-1 display-3 text-danger">Страница не найдена!</div>
-        </div>   
-        <div class="copyright">&copy; SAMSON 2020</div>     
-    </div>     
+<template>    
+    <div class="error">
+        <div>Страница не найдена!</div>
+    </div>           
+      
 </template>
 
 <style scoped>
 .error{
-   padding-top: 15%;
-   text-align: center;
-}
-
-.copyright{
-    position: fixed;
-    bottom: 0;
-    left: 50%;
-    transform: translateX(-50%);
+    margin:0 0.5rem; 
+    color:#F76C6C;  
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 3.5rem;
+    text-align: center;
 }
 </style>

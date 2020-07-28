@@ -1,6 +1,5 @@
-export function SendQuery(url, body) {
-    console.log(body)
-    return fetch(url, {
+export async function SendQuery(url, body) {       
+    return await fetch(url, {
         method: "POST",
         body: JSON.stringify(body),
         headers: {
