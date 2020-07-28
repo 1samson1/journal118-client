@@ -9,7 +9,7 @@
                 </div>
                 <div class="form-group">
                     <label for="password">Пароль</label>
-                    <input v-model="password" type="password" class="form-control" id="password" placeholder="Введите пароль" required>
+                    <input v-model="pass" type="password" class="form-control" id="password" placeholder="Введите пароль" required>
                 </div>                
                 <div class="form-group">
                     <input type="submit" class="btn btn-success btn-block" value="Войти">
@@ -20,44 +20,59 @@
 </template>
 
 <script>
+import {mapActions,mapGetters} from 'vuex'
+
 export default {
-    name:'Login',
-    props:{
-        dataUser:Object,
-    },
+    name:'Login',    
     data(){
         return{
             login:'',
-            password:'',
+            pass:'',
         }
     },
     mounted(){
-        if(this.dataUser){
-            this.$router.push('/');
+        if(this.userData){
+            this.$router.push({name:'home'});
         }
     },
-    methods:{
+    methods:{        
         onLogin(){
-            this.$emit('onLogin',{
-                login:this.login,
-                password:this.password,
+            this.auth({
+                body:{
+                    login:this.login,
+                    pass:this.pass,
+                },
+                callback:()=> this.$router.push({name:'home'})
             })
         },
+        ...mapActions({
+           auth:'login'
+        })
     },    
+    computed:{
+        ...mapGetters({
+            userData:'getUserData'
+        })
+    }
 }
 </script>
 
 <style scoped>
 .login{
-    
+    height: 100%;
     display: flex;
     justify-content: center;
     align-items: center;  
     flex-wrap: wrap;
+    padding:0 1rem;
 }
 
 .form-login{
     margin: 0 auto;    
+}
+
+.form-group label{
+    margin-left: .5rem;    
 }
 
 .form-login input{     

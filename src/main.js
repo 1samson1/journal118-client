@@ -2,8 +2,9 @@ import Vue from "vue";
 import App from "@/App.vue";
 import router from "@/router";
 import store from "@/store";
-import '@/styles/bootstrap.min.css';
-import '@/styles/main.css';
+import '@/assets/bootstrap.min.css';
+import '@/assets/animate.min.css';
+import '@/assets/main.css';
 
 
 Vue.config.productionTip = false;

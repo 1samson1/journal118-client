@@ -1,18 +1,23 @@
 <template>    
     <div class="error">
-        <div>Страница не найдена!</div>
+        <div class="title-page" style="color:#F76C6C;  ">Страница не найдена!</div>
+        <div class="copyright">Journal118 &copy; SAMSON 2020</div>  
     </div>           
       
 </template>
 
 <style scoped>
 .error{
-    margin:0 0.5rem; 
-    color:#F76C6C;  
+    margin:0 0.5rem;      
     display: flex;
     justify-content: center;
-    align-items: center;
-    font-size: 3.5rem;
-    text-align: center;
+    align-items: center;  
+    height: 100%;    
+}
+.copyright {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
 }
 </style>

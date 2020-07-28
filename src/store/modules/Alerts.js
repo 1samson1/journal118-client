@@ -1,7 +1,6 @@
 export default {
     actions:{
-        setError({commit},info){
-            console.log('alert',info)
+        setError({commit},info = "Что-то пошло не так"){
             commit('setError',info)
         },
         setSucccess({commit},info){

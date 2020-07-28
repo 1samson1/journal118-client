@@ -1,5 +1,9 @@
 <template>
-    <transition name="fade">
+    <transition 
+        name="fadeAlert"
+        enter-active-class="animate__animated animate__fadeInLeft"
+        leave-active-class="animate__animated animate__fadeOutRight"
+    >
     <div class="m-alert" :class="classIndicator" v-show="show">
         <div class="m-alert-info">{{ info }}</div> 
         <div class="close-m-alert" @click="removeAlert" >
@@ -18,9 +22,15 @@ export default {
         info:String,
         indicator:String,
     },    
+    mounted(){
+        this.show = true
+        setTimeout(()=>{
+            this.removeAlert()
+        },10000)
+    }, 
     data(){
         return {
-            show:true,
+            show:false,
         }
     },   
     methods:{
@@ -39,11 +49,6 @@ export default {
             }
         }
     },    
-    mounted(){
-        setTimeout(()=>{
-            this.removeAlert()
-        },10000)
-    }, 
 }
 </script>
 
@@ -56,7 +61,7 @@ export default {
     background-color: #dc3545;
     position: relative;
     padding: .75rem 1.25rem;
-    margin-bottom: 1rem;
+    margin: 0 1rem 1rem 1rem;    
     border: 1px solid transparent;
     border-radius: .25rem;   
 }

@@ -14,24 +14,12 @@
     justify-content: center;
 }
 
-.content {
-    padding-bottom: 300px;
-    overflow-y: auto;
-    height: 100%;
-    min-height: 500px;
-}
 
 .darkTheme {
     background-color: #202020;
     color: #fff;
 }
 
-.copyright {
-    position: fixed;
-    bottom: 0;
-    left: 50%;
-    transform: translateX(-50%);
-}
 /*/////////// BUTTONS ////////////*/
 
 .button {

@@ -1,6 +1,7 @@
 <template>
     <div class="home">
         <div class="title-page">Добро пожаловать в журнал!</div>
+        <div class="copyright">Journal118 &copy; SAMSON 2020</div>  
     </div>
 </template>
 
@@ -10,5 +11,12 @@
     display: flex;
     justify-content: center;
     align-items: center;  
+    height: 100%;
+}
+.copyright {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
 }
 </style>

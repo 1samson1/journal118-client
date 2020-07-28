@@ -13,16 +13,20 @@
 </template>
 
 <script>
-
 import MAlert from "@/components/MAlert";
-export default {
-    props:{
-        alerts:Array,
-    },
+import {mapActions , mapGetters} from "vuex"
+
+export default {    
     methods:{
         removeAlert(id){
-            this.$emit('removeAlert',id)
-        }
+            this.removeAlert(id)
+        },
+        ...mapActions(['removeAlert'])
+    },
+    computed:{
+        ...mapGetters({
+            alerts:'getAlerts',
+        })
     },
     components:{
         MAlert

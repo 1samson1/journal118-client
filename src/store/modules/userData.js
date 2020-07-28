@@ -1,44 +1,37 @@
-
-
 export default {
-    actions:{
-        cicleCheckToken({dispatch}){
-            dispatch('checkToken')
-            setInterval(() => {   
-                dispatch('checkToken')
-            }, 30000);
-        },
-        checkToken({commit,dispatch,state}){
-            if (state.token) {
-                dispatch('sendQuery',{
-                    url:'/api/confirm.php',
-                    body:{
-                        token:state.token
-                    },
-                    success: (success) => {
-                        commit('setData',success)
-                    },
-                    error:() =>{                    
-                        commit('removeData')
-                    },
-                },{ root: true })
-            }
-        }, 
-        login({state}) {       
-            state     
-           /*  SendQuery(this.domain + "/api/login.php", {
-                login: data_login.login,
-                pass: data_login.password,
-            })
-                .then((json) => {                    
-                    if (json.error) {
-                        return this.setError(json.error_info);
-                    }
-                    this.dataUser = json.response.user
-                    this.dataToken = json.response.token 
-                    this.setSucccess("Вы авторизованы")             
+    actions:{  
+              
+        reg({dispatch},{body,callback}){            
+            dispatch('sendQuery',{ url:'/api/reg.php',body,},{ root: true })
+                .then(()=> {
+                    callback()
+                    dispatch('setSucccess','Вы зарегистрированы')
                 })
-                .catch((err) => this.setError(err.error_info)); */
+                .catch(()=> {})
+        }, 
+        checkToken({commit, dispatch, state}){
+            if (state.token) {
+                dispatch('cicleSendQuery',{
+                    url:'/api/confirm.php',
+                    body:{token:state.token},
+                },{ root: true })
+                    .then(success=> commit('setData',success))
+                    .catch(()=> commit('removeData'))
+            }                         
+        }, 
+        logout({commit,dispatch}){
+            dispatch('setSucccess','Вы вышли из аккаунта')
+            commit('removeData')
+        },
+        login({dispatch, commit},{body,callback}) {       
+            dispatch('sendQuery',{ url:'/api/login.php', body},{ root: true })
+                .then((success)=>{                
+                    callback()
+                    dispatch('setSucccess','Вы авторизованы')
+                    commit('setData',success.user)
+                    commit('setToken',success.token)             
+                })
+                .catch(()=>{})
         },       
     },
     mutations:{
@@ -49,13 +42,15 @@ export default {
             state.token = token
         },
         removeData(state){
+            localStorage.removeItem('token')
+            sessionStorage.removeItem('token')
             state.token = ''
             state.data = null 
         }
     },
     state:{
-        token:'$2y$10$Eetuw0uk9y/avGA7Vr7x5.pLFCHkIz0vl8axm8F3/Mpe9SeYTLNtK',
-        data:{},
+        token:localStorage.token || sessionStorage.token || '',
+        data:null,
     },
     getters:{
         getUserData(state){
