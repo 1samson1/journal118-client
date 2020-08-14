@@ -75,6 +75,7 @@ export default {
     cursor: pointer;
     border-radius: 50%;
     background-color: #00000030;
+    height: 1.5rem;
 }
 
 .close-m-alert:hover{

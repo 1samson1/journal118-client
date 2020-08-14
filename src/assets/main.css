@@ -64,6 +64,8 @@
 
 .btm-border:focus{
     outline: none;
+    /* border-color:#14a76c;
+    color:#14a76c; */
 }
 
 /*/////////// BUTTONS ////////////*/

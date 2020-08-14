@@ -14,17 +14,18 @@ export default {
                 })
                 .catch(()=>{})
         },
-        fetchDates({commit, dispatch }){
+        fetchDates({commit, dispatch },{callback}){
             dispatch('sendQuery',{ url:'/api/getDates.php',body:null,},{ root: true })
-                .then(success=>{                        
-                    commit('setDutyList',success)
+                .then(success=>{
+                    commit('setDates',success)
+                    callback()                        
                 })
                 .catch(()=>{})
         },
         fetchDatesWork({commit, dispatch },{date_id}){
-            dispatch('sendQuery',{ url:'/api/getDatesWork.php',body:date_id,},{ root: true })
+            dispatch('sendQuery',{ url:'/api/getDatesWork.php',body:{date_id},},{ root: true })
                 .then(success=>{                        
-                    commit('setDutyList',success)
+                    commit('setDatesWork',success)
                 })
                 .catch(()=>{})
         },
@@ -37,7 +38,7 @@ export default {
             state.DutyList = data
         },
         setDates(state,data){
-            state.Dates = data
+            state.Dates = data || []
         },
         setDatesWork(state,data){
             state.DatesWork = data
@@ -46,7 +47,7 @@ export default {
     state:{
         DutyList:null,
         BlackList:null,
-        Dates:null,
+        Dates:[],
         DatesWork:null,
     },
     getters:{
@@ -57,7 +58,7 @@ export default {
             return state.DutyList
         },
         getDates(state){
-            return state.Dates
+            return state.Dates 
         },
         getDatesWork(state){
             return state.DatesWork

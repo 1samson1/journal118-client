@@ -19,7 +19,7 @@ import ListRecord from "./ListRecord.vue";
 import {mapActions,mapGetters} from "vuex"
 
 export default {
-    name:'DutyList',
+    name:'BlackList',
     mounted(){
         this.fetchBlackList()
     },
