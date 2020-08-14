@@ -3,7 +3,7 @@
         <div class="menu-top">
             <nav>
                 <router-link class="button link-page"  to="/">Главная</router-link>
-                <router-link class="button link-page" to="/journal">Журнал</router-link>
+                <router-link class="button link-page" to="/journal/">Журнал</router-link>
             </nav>  
             <div style="margin:0 1rem">
                     <input :checked="darkTheme" @change="changeTheme" type="checkbox" id="darkTheme" name="set-name" class="switch-input">

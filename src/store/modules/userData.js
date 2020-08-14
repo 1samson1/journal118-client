@@ -1,6 +1,5 @@
 export default {
     actions:{  
-              
         reg({dispatch},{body,callback}){            
             dispatch('sendQuery',{ url:'/api/reg.php',body,},{ root: true })
                 .then(()=> {
@@ -9,13 +8,18 @@ export default {
                 })
                 .catch(()=> {})
         }, 
+        cicleCheckToken({dispatch},data){
+            dispatch('checkToken',data)
+            setInterval(() => {
+                dispatch('checkToken',data)
+            }, 30000);
+        },
         checkToken({commit, dispatch, state}){
             if (state.token) {
-                dispatch('cicleSendQuery',{
-                    url:'/api/confirm.php',
-                    body:{token:state.token},
-                },{ root: true })
-                    .then(success=> commit('setData',success))
+                dispatch('sendQuery',{ url:'/api/confirm.php',body:{token:state.token},},{ root: true })
+                    .then(success=>{                        
+                        commit('setData',success)
+                    })
                     .catch(()=> commit('removeData'))
             }                         
         }, 
@@ -23,13 +27,13 @@ export default {
             dispatch('setSucccess','Вы вышли из аккаунта')
             commit('removeData')
         },
-        login({dispatch, commit},{body,callback}) {       
+        login({dispatch, commit},{body,onlyLogin,callback}) {       
             dispatch('sendQuery',{ url:'/api/login.php', body},{ root: true })
                 .then((success)=>{                
                     callback()
                     dispatch('setSucccess','Вы авторизованы')
                     commit('setData',success.user)
-                    commit('setToken',success.token)             
+                    commit('setToken',{token:success.token,onlyLogin})             
                 })
                 .catch(()=>{})
         },       
@@ -38,7 +42,12 @@ export default {
         setData(state,data){
             state.data = data
         },
-        setToken(state,token){
+        setToken(state,{token,onlyLogin}){
+            if(onlyLogin)
+                sessionStorage.token = token
+            else
+                localStorage.token = token
+
             state.token = token
         },
         removeData(state){

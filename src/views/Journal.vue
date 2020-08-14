@@ -1,13 +1,24 @@
 <template>
-    
+    <div class="journal full-height">
+        <DatesWork />
+        <DutyBlackList />
+    </div>
 </template>
-
-<script>
-export default {
     
+<script>
+import DatesWork from "@/components/Journal/DatesWork.vue";
+import DutyBlackList from "@/components/Journal/DutyBlackList.vue";
+
+export default {
+    components: {
+        DatesWork,DutyBlackList,
+    },
 }
 </script>
 
 <style scoped>
-
+.journal{
+    display: flex;
+    flex-direction: row;
+}
 </style>

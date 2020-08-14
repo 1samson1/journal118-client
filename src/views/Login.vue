@@ -11,6 +11,10 @@
                     <label for="password">Пароль</label>
                     <input v-model="pass" type="password" class="form-control" id="password" placeholder="Введите пароль" required>
                 </div>                
+                <div class="custom-control custom-checkbox">
+                    <input v-model="onlyLogin" :checked="onlyLogin" type="checkbox" class="custom-control-input" id="onlyLogin">
+                    <label for="onlyLogin" class="custom-control-label" >Чужой компьютер</label>
+                </div>                
                 <div class="form-group">
                     <input type="submit" class="btn btn-success btn-block" value="Войти">
                 </div>
@@ -28,6 +32,7 @@ export default {
         return{
             login:'',
             pass:'',
+            onlyLogin:false,
         }
     },
     mounted(){
@@ -42,6 +47,7 @@ export default {
                     login:this.login,
                     pass:this.pass,
                 },
+                onlyLogin:this.onlyLogin,
                 callback:()=> this.$router.push({name:'home'})
             })
         },

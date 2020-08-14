@@ -1,4 +1,8 @@
 /*/////////// GLOBAL CLASSES APP ////////////*/
+*{
+    box-sizing: border-box;
+}
+
 .darkThemeText {
     color: #fff;
 }
@@ -9,20 +13,21 @@
     text-align: center;
 }
 
-.center-block {
-    display: flex;
-    justify-content: center;
-}
-
-
 .darkTheme {
     background-color: #202020;
-    color: #fff;
+    color: #e6e6e6;
+}
+
+.darkTheme button{
+    color:#e6e6e6;
 }
 
 /*/////////// BUTTONS ////////////*/
+.btm-stretch{
+    width: 100% !important;
+}
 
-.button {
+.button {    
     user-select: none;
     text-decoration: none;
     display: inline-block;
@@ -32,8 +37,33 @@
 }
 
 .button:hover {
-    background-color: #77777777;
+    background-color: #77777725;
     text-decoration: none;
+}
+
+.btm-border{
+    font-size: 1rem;    
+    cursor: pointer;
+    user-select: none;
+    padding: .75rem;
+    border: none; 
+    background: none;
+    border-bottom: 2px solid #777777; 
+}
+
+.btm-border:hover{
+    border-color:#14a76c;
+    color:#14a76c;
+}
+
+.btm-border:disabled{
+    border-color:#777777;
+    color:#777777;
+    cursor: default;
+}
+
+.btm-border:focus{
+    outline: none;
 }
 
 /*/////////// BUTTONS ////////////*/
@@ -48,7 +78,7 @@
 }
 
 .options-dropdown {
-    z-index: 1;
+    z-index: 2;
     transition: opacity 0.5s ease;
     position: absolute;
     top: calc(100% + 5px);

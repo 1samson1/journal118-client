@@ -5,8 +5,7 @@
             <transition name="fade">
                 <router-view />      
             </transition>             
-        </div>            
-        
+        </div>
     </div>    
 </template>
 
@@ -17,10 +16,10 @@ import { mapActions, mapGetters } from "vuex"
 export default {
     name: "App",    
     mounted() {
-        this.checkToken()
+        this.cicleCheckToken()
     },
     methods: {
-        ...mapActions(['checkToken']),
+        ...mapActions(['cicleCheckToken']),
     }, 
     computed:{
         ...mapGetters({
@@ -43,8 +42,22 @@ export default {
     flex-direction: column;
     height: 100vh;
     overflow: hidden;
-
 }
+
+.full-height{
+    position: relative;
+    height: 100% !important;    
+}
+
+.block-scroll{
+    position: absolute; 
+    left:0;
+    right:0;
+    top:0;
+    bottom:0;
+    overflow-y: auto;
+}
+
 .content{
     overflow-y: auto;
     flex-grow: 3;

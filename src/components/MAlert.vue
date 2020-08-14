@@ -54,6 +54,7 @@ export default {
 
 <style scoped>
 .m-alert{ 
+    z-index: 1;
     color:#FFF;
     display: flex;
     justify-content: space-between;
