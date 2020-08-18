@@ -1,10 +1,10 @@
 export default {
     actions:{  
-        reg({dispatch},{body,callback}){            
+        reg({dispatch},{body,done}){            
             dispatch('sendQuery',{ url:'/api/reg.php',body,},{ root: true })
                 .then(()=> {
-                    callback()
                     dispatch('setSucccess','Вы зарегистрированы')
+                    done()
                 })
                 .catch(()=> {})
         }, 
@@ -27,13 +27,13 @@ export default {
             dispatch('setSucccess','Вы вышли из аккаунта')
             commit('removeData')
         },
-        login({dispatch, commit},{body,onlyLogin,callback}) {       
+        login({dispatch, commit},{body,onlyLogin,done}) {       
             dispatch('sendQuery',{ url:'/api/login.php', body},{ root: true })
                 .then((success)=>{                
-                    callback()
                     dispatch('setSucccess','Вы авторизованы')
                     commit('setData',success.user)
                     commit('setToken',{token:success.token,onlyLogin})             
+                    done()
                 })
                 .catch(()=>{})
         },       

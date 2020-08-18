@@ -1,5 +1,5 @@
 <template>
-    <div class="duty-black-list full-height">
+    <div class="admin">
         <div class="togglesList">
             <div class="toggleList" 
                 v-for="tab of tabs"
@@ -10,48 +10,52 @@
                 {{ tab.label }}
             </div>
         </div>
-        <div class="lists">
-            <component :is="current"></component>                            
-        </div>                  
+        <div class="utils">
+            <component class="block-scroll" :is="current"></component>                            
+        </div>    
     </div>
 </template>
 
 <script>
-import DutyList from "./DutyList.vue";
-import BlackList from "./BlackList.vue";
+import AddDatesWork from "@/components/Admin/AddDatesWork.vue";
+import GenDutyList from "@/components/Admin/GenDutyList.vue";
+import EditUsers from "@/components/Admin/EditUsers.vue";
 
 export default {
-    name:'DutyBlackList',
+    name:'Admin',
     data(){
         return {
-            current:'DutyList',
+            current:'AddDatesWork',
             tabs:[
                 {
-                    label:'Дежурные',
-                    component:'DutyList'
-                },
+                    label:'Посещаемость',
+                    component:'AddDatesWork'
+                },                
                 {
-                    label:'Задолжности',
-                    component:'BlackList'
-                }
+                    label:'Генератор дежурных',
+                    component:'GenDutyList'
+                },                
+                {
+                    label:'Пользователи',
+                    component:'EditUsers'
+                },                
             ],
         }       
     },
     components:{
-        DutyList,BlackList,
+        AddDatesWork,GenDutyList,EditUsers
     }
 }
 </script>
 
 <style scoped>
-.duty-black-list{
-    display: flex;
-    flex:550px 0 1;
-    flex-direction: column;
-    border-left: 2px solid rgba(0,0,0,.075);    
+.admin{
+    display: flex;    
+    flex-direction: column;  
+    height: 100%;     
 }
 
-.lists{
+.utils{
     flex-grow: 3;
     position: relative;
 }

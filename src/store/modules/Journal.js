@@ -1,33 +1,37 @@
 export default {  
     actions:{
-        fetchBlackList({commit, dispatch }){
+        fetchBlackList({commit, dispatch },{lastly}){
             dispatch('sendQuery',{ url:'/api/getBlackList.php',body:null,},{ root: true })
                 .then(success=>{                        
                     commit('setBlackList',success)
                 })
                 .catch(()=>{})
+                .finally(()=> lastly())
         },
-        fetchDutyList({commit, dispatch }){
+        fetchDutyList({commit, dispatch },{lastly}){
             dispatch('sendQuery',{ url:'/api/getDutyList.php',body:null,},{ root: true })
                 .then(success=>{                        
                     commit('setDutyList',success)
                 })
                 .catch(()=>{})
+                .finally(()=> lastly())
         },
-        fetchDates({commit, dispatch },{callback}){
+        fetchDates({commit, dispatch },{done,lastly}){
             dispatch('sendQuery',{ url:'/api/getDates.php',body:null,},{ root: true })
                 .then(success=>{
                     commit('setDates',success)
-                    callback()                        
+                    done()                        
                 })
                 .catch(()=>{})
+                .finally(()=> lastly())
         },
-        fetchDatesWork({commit, dispatch },{date_id}){
+        fetchDatesWork({commit, dispatch },{date_id,lastly}){
             dispatch('sendQuery',{ url:'/api/getDatesWork.php',body:{date_id},},{ root: true })
                 .then(success=>{                        
                     commit('setDatesWork',success)
                 })
                 .catch(()=>{})
+                .finally(()=> lastly())
         },
     },
     mutations:{

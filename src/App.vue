@@ -63,4 +63,9 @@ export default {
     flex-grow: 3;
     position: relative;
 }
+
+.wait-dev{
+    margin:auto
+}
+
 </style>

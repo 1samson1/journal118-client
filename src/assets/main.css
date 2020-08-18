@@ -13,13 +13,26 @@
     text-align: center;
 }
 
-.darkTheme {
+.darkTheme, .darkTheme option{
     background-color: #202020;
     color: #e6e6e6;
 }
 
-.darkTheme button{
+.darkTheme button,.darkTheme select, .darkTheme input{
     color:#e6e6e6;
+}
+
+/*/////////// SELECT ////////////*/
+select{
+    background: #77777725;
+    padding:.5rem 2rem;
+    border-radius: 1rem;
+    border:none;
+}
+
+select:focus{
+    border:1px solid #77777777;
+    outline: none;
 }
 
 /*/////////// BUTTONS ////////////*/
@@ -68,49 +81,37 @@
     color:#14a76c; */
 }
 
-/*/////////// BUTTONS ////////////*/
-
-.dropdown {
-    position: relative;
-    display: block;
-    padding: 1rem;
-    background-color: #e7e7e7;
-    border-radius: 5px;
-    color: #000;
-}
-
-.options-dropdown {
-    z-index: 2;
-    transition: opacity 0.5s ease;
-    position: absolute;
-    top: calc(100% + 5px);
-    right: 0;
-    background-color: #e7e7e7;
-    border-radius: 5px;
-}
-
-.option-dropdown {
-    user-select: none;
-    padding: 0.8rem;
-}
-
-.option-dropdown:hover {
-    background-color: #cfcfcf;
-}
-
-.darkDropdown {
-    background-color: #3a3a3a;
-    color: #fff;
-}
-.darkDropdown .options-dropdown {
-    background-color: #3a3a3a;
-}
-
-.darkDropdown .options-dropdown .option-dropdown:hover {
-    background-color: #2a2a2a;
-}
-
 /*/////////// FORM ////////////*/
+.form-group label{
+    margin-left: .5rem;    
+}
+
+.form-input{
+    background:#77777710;
+    width: 100%;
+    padding: .3rem;
+    margin:.3rem 0 .5rem 0;
+    border:none;
+    border-bottom: 1px solid #777777;
+}
+
+.form-input:focus,.form-input:hover{
+    border-bottom: 1px solid #14a76c;
+    outline: none;
+}
+
+.form-button{
+    width: 100%;
+    padding: .4rem;
+    background: #14a76c;
+    color:#FFF;
+    border:none;
+    cursor: pointer;
+}
+
+.form-button:hover, .form-button:focus{
+    background: #14a76cec;    
+}
 
 /*/////////// SWITCH ////////////*/
 
@@ -164,31 +165,4 @@
     -ms-transform: translate(80%, -50%);
     -webkit-transform: translate(80%, -50%);
     transform: translate(80%, -50%);
-}
-
-/*/////////// ANIMATIONS ////////////*/
-.fade-page-leave-active {
-    transition: opacity 0.5s ease;
-}
-
-.fade-page-enter-active {
-    transition: opacity 0.5s ease 0.5s;
-}
-
-.fade-page-enter, .fade-page-leave-to /* .fade-leave-active до версии 2.1.8 */ {
-    opacity: 0;
-}
-
-
-
-.fade-enter, .fade-leave-to {
-    opacity: 0;    
-}
-
-.fade-enter-to, .fade-leave {
-    opacity: 1;    
-}
-
-.fade-enter-active, .fade-leave-active {    
-    transition: opacity 0.5s ease; 
 }

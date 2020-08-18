@@ -1,7 +1,9 @@
 <template>
     <div class="black-list block-scroll">
         <button class="btm-border btm-stretch" @click="update">Обновить</button>
-        <ListRecord 
+        <Loader  v-if="loading"/>
+        <div class="empty" v-else-if="!getBlackList">Список пуст!</div>       
+        <ListRecord v-else
             v-for="record of getBlackList"
             :key="record.date_id + record.user_id"
             :date="record.date" 
@@ -10,22 +12,30 @@
             :reason="record.reason"
             indicator="blacklist"
         /> 
-        <div class="empty" v-if="!getBlackList">Список пуст!</div>       
     </div>
 </template>
 
 <script>
 import ListRecord from "./ListRecord.vue";
+import Loader from "@/components/Loader.vue";
 import {mapActions,mapGetters} from "vuex"
 
 export default {
     name:'BlackList',
+    data(){
+        return {
+            loading:true
+        }
+    },
     mounted(){
-        this.fetchBlackList()
+        this.update()
     },
     methods:{
         update(){
-            this.fetchBlackList()
+            this.loading = true
+            this.fetchBlackList({
+                lastly:() => this.loading = false
+            })
         },
         ...mapActions(['fetchBlackList']),
     },
@@ -33,7 +43,7 @@ export default {
         ...mapGetters(['getBlackList']),
     },
     components:{
-        ListRecord,
+        ListRecord,Loader,
     }
 }
 </script>

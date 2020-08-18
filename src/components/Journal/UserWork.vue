@@ -26,5 +26,7 @@ export default {
 </script>
 
 <style scoped>
-
+.user-work:nth-child(even) {
+    background: #7777773a;
+}
 </style>

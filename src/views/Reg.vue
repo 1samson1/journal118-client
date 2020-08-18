@@ -1,34 +1,34 @@
 <template>    
     <div class="reg">
-        <div style="flex:600px 0 1;">
+        <div style="flex:500px 0 1;">
             <div class="title-page">Регистрация</div>
             <form class="form-reg" @submit.prevent='onReg'>                
                 <div class="form-group">
                     <label for="name">Имя</label>
-                    <input v-model="name" type="text" class="form-control" id="name" placeholder="Введите имя" required>
+                    <input v-model="name" type="text" class="form-input" id="name" placeholder="Введите имя" required>
                 </div>
                 <div class="form-group">
                     <label for="surname">Фамилия</label>
-                    <input v-model="surname" type="text" class="form-control" id="surname" placeholder="Введите фамилию" required>
+                    <input v-model="surname" type="text" class="form-input" id="surname" placeholder="Введите фамилию" required>
                 </div>
                 <div class="form-group">
                     <label for="login">Логин</label>
-                    <input v-model="login" type="text" class="form-control" id="login" placeholder="Введите логин" required>
+                    <input v-model="login" type="text" class="form-input" id="login" placeholder="Введите логин" required>
                 </div>
                 <div class="form-group">
                     <label for="email">E-mail</label>
-                    <input v-model="email" type="text" class="form-control" id="email" placeholder="Введите e-mail" required>
+                    <input v-model="email" type="text" class="form-input" id="email" placeholder="Введите e-mail" required>
                 </div>
                 <div class="form-group">
                     <label for="password">Пароль</label>
-                    <input v-model="pass" type="password" class="form-control" id="password" placeholder="Введите пароль" required>
+                    <input v-model="pass" type="password" class="form-input" id="password" placeholder="Введите пароль" required>
                 </div>                
                 <div class="form-group">
                     <label for="repassword">Подтверждение пароля</label>
-                    <input v-model="repass" type="password" class="form-control" id="repassword" placeholder="Подтвердите пароль" required>
+                    <input v-model="repass" type="password" class="form-input" id="repassword" placeholder="Подтвердите пароль" required>
                 </div>                
                 <div class="form-group">
-                    <input type="submit" class="btn btn-success btn-block" value="Зарегистрироваться">
+                    <input type="submit" class="form-button" value="Зарегистрироваться">
                 </div>
             </form>            
         </div>         
@@ -66,7 +66,7 @@ export default {
                     pass:this.pass,
                     repass:this.repass,
                 },                
-                callback:()=> this.$router.push({name:'login'})
+                done:()=> this.$router.push({name:'login'})
             })
         },
         ...mapActions(['reg'])
@@ -93,17 +93,8 @@ export default {
     margin: 0 auto;    
 }
 
-.form-group label{
-    margin-left: .5rem;
-}
-
 .form-reg input{     
-    font-size:1.5rem ;    
-    max-width: 600px;    
-}
-
-.custom-checkbox{
-    padding-bottom: 1rem;
+    font-size:1.3rem ;
 }
 </style>
 

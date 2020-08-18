@@ -1,22 +1,19 @@
 <template>    
     <div class="login">
-        <div style="flex:600px 0 1;">
+        <div style="flex:500px 0 1;">
             <div class="title-page">Авторизация</div>
             <form class="form-login" @submit.prevent='onLogin'>                
                 <div class="form-group">
                     <label for="login">Логин</label>
-                    <input v-model="login" type="text" class="form-control" id="login" placeholder="Введите логин" required>
+                    <input v-model="login" type="text" class="form-input" id="login" placeholder="Введите логин" required>
                 </div>
                 <div class="form-group">
                     <label for="password">Пароль</label>
-                    <input v-model="pass" type="password" class="form-control" id="password" placeholder="Введите пароль" required>
-                </div>                
-                <div class="custom-control custom-checkbox">
-                    <input v-model="onlyLogin" :checked="onlyLogin" type="checkbox" class="custom-control-input" id="onlyLogin">
-                    <label for="onlyLogin" class="custom-control-label" >Чужой компьютер</label>
-                </div>                
+                    <input v-model="pass" type="password" class="form-input" id="password" placeholder="Введите пароль" required>
+                </div>               
+                <CheckBox v-model="onlyLogin">Чужой компьютер</CheckBox>                             
                 <div class="form-group">
-                    <input type="submit" class="btn btn-success btn-block" value="Войти">
+                    <input type="submit" class="form-button" value="Войти">
                 </div>
             </form>  
         </div>         
@@ -24,6 +21,7 @@
 </template>
 
 <script>
+import CheckBox from '@/components/CheckBox.vue'
 import {mapActions,mapGetters} from 'vuex'
 
 export default {
@@ -48,7 +46,7 @@ export default {
                     pass:this.pass,
                 },
                 onlyLogin:this.onlyLogin,
-                callback:()=> this.$router.push({name:'home'})
+                done:()=> this.$router.push({name:'home'})
             })
         },
         ...mapActions({
@@ -59,7 +57,11 @@ export default {
         ...mapGetters({
             userData:'getUserData'
         })
+    },
+    components:{
+        CheckBox,
     }
+
 }
 </script>
 
@@ -77,16 +79,7 @@ export default {
     margin: 0 auto;    
 }
 
-.form-group label{
-    margin-left: .5rem;    
-}
-
 .form-login input{     
-    font-size:1.5rem ;    
-    max-width: 600px;    
-}
-
-.custom-checkbox{
-    padding-bottom: 1rem;
+    font-size:1.3rem ;      
 }
 </style>

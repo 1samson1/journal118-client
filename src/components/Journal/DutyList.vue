@@ -1,7 +1,9 @@
 <template>
     <div class="duty-list block-scroll">
         <button class="btm-border btm-stretch" @click="update">Обновить</button>
-        <ListRecord 
+        <Loader  v-if="loading"/>
+        <div class="empty" v-else-if="!getDutyList">Список пуст!</div>  
+        <ListRecord v-else
             v-for="record of getDutyList"
             :key="record.date_id + record.user_id"
             :date="record.date" 
@@ -10,22 +12,30 @@
             :reason="record.reason"
             indicator="dutylist"
         />
-        <div class="empty" v-if="!getDutyList">Список пуст!</div>  
     </div>
 </template>
 
 <script>
 import ListRecord from "./ListRecord.vue";
+import Loader from "@/components/Loader.vue";
 import {mapActions,mapGetters} from "vuex"
 
 export default {
     name:'DutyList',
+    data(){
+        return {
+            loading:true
+        }
+    },
     mounted(){
-        this.fetchDutyList()
+        this.update()
     },
     methods:{
         update(){
-            this.fetchDutyList()
+            this.loading = true
+            this.fetchDutyList({
+                lastly:() => this.loading = false
+            })
         },
         ...mapActions(['fetchDutyList']),
     },
@@ -33,7 +43,7 @@ export default {
         ...mapGetters(['getDutyList']),
     },
     components:{
-        ListRecord,
+        ListRecord,Loader,
     }
 }
 </script>
