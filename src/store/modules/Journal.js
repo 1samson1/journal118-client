@@ -2,17 +2,13 @@ export default {
     actions:{
         fetchBlackList({commit, dispatch },{lastly}){
             dispatch('sendQuery',{ url:'/api/getBlackList.php',body:null,},{ root: true })
-                .then(success=>{                        
-                    commit('setBlackList',success)
-                })
+                .then(success=> commit('setBlackList',success))
                 .catch(()=>{})
                 .finally(()=> lastly())
         },
         fetchDutyList({commit, dispatch },{lastly}){
             dispatch('sendQuery',{ url:'/api/getDutyList.php',body:null,},{ root: true })
-                .then(success=>{                        
-                    commit('setDutyList',success)
-                })
+                .then(success=> commit('setDutyList',success))
                 .catch(()=>{})
                 .finally(()=> lastly())
         },
@@ -27,9 +23,7 @@ export default {
         },
         fetchDatesWork({commit, dispatch },{date_id,lastly}){
             dispatch('sendQuery',{ url:'/api/getDatesWork.php',body:{date_id},},{ root: true })
-                .then(success=>{                        
-                    commit('setDatesWork',success)
-                })
+                .then(success=> commit('setDatesWork',success))
                 .catch(()=>{})
                 .finally(()=> lastly())
         },

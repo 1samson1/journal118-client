@@ -94,7 +94,7 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 .dates-work{
     position: relative;
     width: 100%;
@@ -113,30 +113,6 @@ export default {
     position: relative;
     flex-grow:1;
     padding-top:1rem;
-}
-
-.user-works{
-    display: flex;
-    flex-direction: column;
-}
-
-.user-work, .user-work-header{
-    display: flex;
-    justify-content: space-evenly;
-    align-items: center;
-    border-bottom: 1px solid #cecece; 
-}
-
-.user-work-header{
-    border-top: 1px solid #cecece; 
-    font-weight: bold;
-    background: #7777776b;
-}
-
-.user-work-field{
-    width: 40%;
-    text-align: center;
-    padding:.9rem 0;
 }
 
 .empty{

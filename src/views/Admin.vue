@@ -1,5 +1,6 @@
 <template>
     <div class="admin">
+        <div class="date"></div>
         <div class="togglesList">
             <div class="toggleList" 
                 v-for="tab of tabs"
@@ -11,13 +12,19 @@
             </div>
         </div>
         <div class="utils">
-            <component class="block-scroll" :is="current"></component>                            
+            <transition 
+                name="fadeUtils"
+                enter-active-class="animate__animated animate__fadeIn"
+                leave-active-class="animate__animated animate__fadeOut"
+            >
+                <component class="block-scroll" :is="current"></component> 
+            </transition>                           
         </div>    
     </div>
 </template>
 
 <script>
-import AddDatesWork from "@/components/Admin/AddDatesWork.vue";
+import EditDatesWork from "@/components/Admin/EditDatesWork.vue";
 import GenDutyList from "@/components/Admin/GenDutyList.vue";
 import EditUsers from "@/components/Admin/EditUsers.vue";
 
@@ -25,11 +32,11 @@ export default {
     name:'Admin',
     data(){
         return {
-            current:'AddDatesWork',
+            current:'EditDatesWork',
             tabs:[
                 {
                     label:'Посещаемость',
-                    component:'AddDatesWork'
+                    component:'EditDatesWork'
                 },                
                 {
                     label:'Генератор дежурных',
@@ -43,7 +50,7 @@ export default {
         }       
     },
     components:{
-        AddDatesWork,GenDutyList,EditUsers
+        EditDatesWork,GenDutyList,EditUsers
     }
 }
 </script>

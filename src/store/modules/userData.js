@@ -17,9 +17,7 @@ export default {
         checkToken({commit, dispatch, state}){
             if (state.token) {
                 dispatch('sendQuery',{ url:'/api/confirm.php',body:{token:state.token},},{ root: true })
-                    .then(success=>{                        
-                        commit('setData',success)
-                    })
+                    .then(success=> commit('setData',success))
                     .catch(()=> commit('removeData'))
             }                         
         }, 

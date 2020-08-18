@@ -11,7 +11,7 @@
                     <label for="password">Пароль</label>
                     <input v-model="pass" type="password" class="form-input" id="password" placeholder="Введите пароль" required>
                 </div>               
-                <CheckBox v-model="onlyLogin">Чужой компьютер</CheckBox>                             
+                <CheckBox class="login-checkbox" v-model="onlyLogin">Чужой компьютер</CheckBox>                             
                 <div class="form-group">
                     <input type="submit" class="form-button" value="Войти">
                 </div>
@@ -82,4 +82,9 @@ export default {
 .form-login input{     
     font-size:1.3rem ;      
 }
+
+.login-checkbox{
+    padding-bottom: .5rem;
+}
+
 </style>

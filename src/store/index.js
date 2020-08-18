@@ -2,6 +2,7 @@ import Vuex from 'vuex'
 import Vue from 'vue'
 import UserData from './modules/UserData'
 import Alerts from './modules/Alerts'
+import Admin from './modules/Admin'
 import DarkTheme from './modules/DarkTheme'
 import Journal from './modules/Journal'
 
@@ -34,6 +35,7 @@ export default new Vuex.Store({
     modules:{
         UserData,
         Alerts,
+        Admin,
         DarkTheme,
         Journal
     }

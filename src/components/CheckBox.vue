@@ -98,7 +98,7 @@ export default {
 .checkbox {
     font-size: 1rem;
     display: block;
-    padding:.3rem 1.2rem;
+    padding:0 1.2rem;
 }
 
 .check-input {

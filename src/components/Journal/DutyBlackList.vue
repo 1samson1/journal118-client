@@ -11,7 +11,13 @@
             </div>
         </div>
         <div class="lists">
-            <component :is="current"></component>                            
+            <transition 
+                name="fadeList"
+                enter-active-class="animate__animated animate__fadeIn"
+                leave-active-class="animate__animated animate__fadeOut"
+            >
+                <component :is="current"></component>   
+            </transition>                         
         </div>                  
     </div>
 </template>

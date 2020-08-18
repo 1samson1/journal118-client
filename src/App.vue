@@ -2,7 +2,11 @@
     <div id="app" :class="{ darkTheme: darkTheme }">        
         <Header  />
         <div class="content">
-            <transition name="fade">
+            <transition 
+                name="fadePage"
+                enter-active-class="animate__animated animate__fadeIn"
+                leave-active-class="animate__animated animate__fadeOut"
+            >
                 <router-view />      
             </transition>             
         </div>
