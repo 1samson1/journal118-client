@@ -39,7 +39,7 @@ export default {
         }
     },
     mounted(){
-        if(this.userData){
+        if(!this.logined){
             this.$router.push({name:'home'});
         }
     },
@@ -59,9 +59,7 @@ export default {
         })
     },    
     computed:{
-        ...mapGetters({
-            userData:'getUserData'
-        })
+        ...mapGetters(['logined'])
     },
     components:{
         CheckBox,

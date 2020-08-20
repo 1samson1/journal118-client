@@ -5,6 +5,8 @@
 </template>
 
 <script>
+import {mapGetters} from 'vuex'
+
 export default {
     name:'Profile',
     metaInfo() {
@@ -12,6 +14,14 @@ export default {
             title: 'Профиль'
         }
     }, 
+    mounted(){
+        if(this.logined){
+            this.$router.push({name:'home'});
+        }
+    },
+    computed:{
+        ...mapGetters(['logined'])
+    },
 }
 </script>
 

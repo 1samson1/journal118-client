@@ -27,4 +27,10 @@ export default {
     display: flex;
     flex-direction: row;
 }
+
+@media (max-width: 600px) {
+    .journal{
+        display: block;        
+    }
+}
 </style>

@@ -27,6 +27,7 @@
 import EditDatesWork from "@/components/Admin/EditDatesWork.vue";
 import GenDutyList from "@/components/Admin/GenDutyList.vue";
 import EditUsers from "@/components/Admin/EditUsers.vue";
+import {mapGetters} from 'vuex'
 
 export default {
     name:'Admin',
@@ -53,6 +54,21 @@ export default {
                 },                
             ],
         }       
+    },
+    watch:{
+        isAdmin(nevValue){
+            if(!nevValue){
+                this.$router.push({name:'login'});
+            }
+        }
+    },
+    mounted(){
+        if(!this.isAdmin){
+            this.$router.push({name:'login'});
+        }
+    },
+    computed:{
+        ...mapGetters(['isAdmin'])
     },
     components:{
         EditDatesWork,GenDutyList,EditUsers
