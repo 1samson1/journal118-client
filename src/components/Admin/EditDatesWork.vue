@@ -1,14 +1,14 @@
 <template>
     <div class="add-dates-work">
-        <div class="user-work-header">
-            <div class="user-work-field">Студент</div>
-            <div class="user-work-field">Присутствует</div>
-            <div class="user-work-field">Опоздал</div>
-            <div class="user-work-field">Уроков пропущено</div>                
-        </div>
         <Loader v-if="loading"/>
         <div class="empty" v-else-if="!getDatesWorkToday">Список пуст!</div>  
         <template v-else>
+            <div class="user-work-header">
+                <div class="user-work-field">Студент</div>
+                <div class="user-work-field">Присутствует</div>
+                <div class="user-work-field">Опоздал</div>
+                <div class="user-work-field">Уроков пропущено</div>                
+            </div>
             <EditUserWork 
                 v-for="(userwork, i) of getDatesWorkToday"
                 :key="i" 
@@ -20,7 +20,7 @@
                 :miss_lessons="userwork.miss_lessons"              
             />
             <div class="controls">
-                <input class="form-button" type="button" value="Сохранить">
+                <input class="form-button" type="button" value="Сохранить" @click="saveDatesWorkToday">
             </div>
         </template>        
     </div>
@@ -47,8 +47,14 @@ export default {
             this.fetchDatesWorkToday({
                 lastly:() => this.loading = false
             })
-        },        
-        ...mapActions(['fetchDatesWorkToday']),
+        },   
+        saveDatesWorkToday(){
+            this.loading = true
+            this.pullDatesWorkToday({
+                lastly:() => this.loading = false
+            })
+        },     
+        ...mapActions(['fetchDatesWorkToday','pullDatesWorkToday']),
     },    
     computed:{
         ...mapGetters(['getDatesWorkToday']),
@@ -64,10 +70,19 @@ export default {
     display: flex;
     flex-direction: column;
 }
-.controls{
+.controls{    
+    display: flex;
+    justify-content: space-evenly;
     width: 100%;
-    padding: 1.5rem;
+    padding: 1.2rem;
     background: #77777720;
 }
 
+.controls input{
+    font-size: 1.2rem;
+}
+
+.empty{
+    margin:auto    
+}
 </style>

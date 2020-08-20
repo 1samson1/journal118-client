@@ -100,17 +100,24 @@ select:focus{
     outline: none;
 }
 
-.form-button{
-    width: 100%;
-    padding: .4rem;
+.form-button{    
+    padding: .4rem 3rem;
     background: #14a76c;
     color:#FFF;
     border:none;
     cursor: pointer;
 }
 
+.fb-block{
+    width: 100%;
+}
+
 .form-button:hover, .form-button:focus{
     background: #14a76cec;    
+}
+
+.form-button:disabled{
+    background: #14a76ccc;
 }
 
 /*/////////// SWITCH ////////////*/
@@ -178,6 +185,7 @@ select:focus{
     display: flex;
     justify-content: space-evenly;
     align-items: center;
+    padding:0 .4rem;
     border-bottom: 1px solid #cecece; 
 }
 
@@ -191,4 +199,17 @@ select:focus{
     width: 40%;
     text-align: center;
     padding:.9rem 0;
+}
+
+/*/////////// ANIMATIONS ////////////*/
+.fadePage-leave-active {
+    transition: opacity 0.5s ease;    
+}
+
+.fadePage-enter-active {
+    transition: opacity 0.5s ease 0.5s;    
+}
+
+.fadePage-enter, .fadePage-leave-to {
+    opacity: 0;    
 }

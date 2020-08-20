@@ -1,4 +1,4 @@
-export function SendQuery(url, body) {       
+export function SendQuery(url, body) {
     return fetch(url, {
         method: "POST",
         body: JSON.stringify(body),

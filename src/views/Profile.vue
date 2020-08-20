@@ -6,7 +6,12 @@
 
 <script>
 export default {
-    
+    name:'Profile',
+    metaInfo() {
+        return {
+            title: 'Профиль'
+        }
+    }, 
 }
 </script>
 

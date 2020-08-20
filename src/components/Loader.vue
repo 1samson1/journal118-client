@@ -1,5 +1,5 @@
 <template>    
-    <div class="loader">
+    <div class="loader" :class="{center:center}">
         <div class="lds-ring">
             <div></div>
             <div></div>
@@ -9,8 +9,23 @@
     </div>
 </template>
 
+<script>
+export default {
+    name:'Loader',
+    props:{
+        center:{
+            type:Boolean,
+            default:true,
+        }
+    }
+}
+</script>
+
 .<style scoped>
-.loader {
+.loader{
+    margin: 0 auto;
+} 
+.center {
     margin: auto;
 }
 .lds-ring {

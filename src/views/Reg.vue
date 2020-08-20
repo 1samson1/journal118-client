@@ -28,7 +28,7 @@
                     <input v-model="repass" type="password" class="form-input" id="repassword" placeholder="Подтвердите пароль" required>
                 </div>                
                 <div class="form-group">
-                    <input type="submit" class="form-button" value="Зарегистрироваться">
+                    <input type="submit" class="form-button fb-block" value="Зарегистрироваться">
                 </div>
             </form>            
         </div>         
@@ -39,7 +39,12 @@
 import {mapActions,mapGetters} from 'vuex'
 
 export default {
-    name:'reg',
+    name:'reg',    
+    metaInfo() {
+        return {
+            title: 'Регистрация'
+        }
+    }, 
     data(){
         return{
             name:'',

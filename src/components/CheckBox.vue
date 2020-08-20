@@ -15,7 +15,7 @@
             @click="onClick"
             @focus="onFocus"
         >
-        <span class="check"></span>
+        <span class="check" :class="{checkCenter:center}"></span>
         <span class="label"><slot>{{ label }}</slot></span>
     </label>
 </template>
@@ -40,6 +40,10 @@ export default {
             type: String,
             default: 'on' // HTML default
         },
+        center:{
+            type: Boolean,
+            default: false
+        },
         checked: {
             type: Boolean,
             default: false
@@ -62,7 +66,7 @@ export default {
     },
 
     created() {
-        this.$emit('input', this.isChecked ? this.trueValue : this.falseValue);
+        //this.$emit('input', this.isChecked ? this.trueValue : this.falseValue);
     },
 
     methods: {
@@ -95,7 +99,10 @@ export default {
 </script>
 
 <style scoped>
+
+
 .checkbox {
+    position: relative;
     font-size: 1rem;
     display: block;
     padding:0 1.2rem;
@@ -127,6 +134,12 @@ export default {
 .check-input:checked + .check {
     border:0.2rem solid rgb(28, 138, 105);
     background: rgb(28, 138, 105) url("data:image/svg+xml;charset=UTF-8,%3c?xml version='1.0' ?%3e%3csvg id='Layer_1' style='enable-background:new 0 0 512 512;' version='1.1' viewBox='0 0 512 512' xml:space='preserve' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink'%3e%3cg%3e%3cpolygon class='st0' fill='%23FFF' points='434.8,49 174.2,309.7 76.8,212.3 0,289.2 174.1,463.3 196.6,440.9 196.6,440.9 511.7,125.8 434.8,49 '/%3e%3c/g%3e%3c/svg%3e");       
+}
+
+.checkCenter{
+    left: 50%;
+    margin-left: 0;
+    transform: translateX(-50%);
 }
 
 /* FOCUS CHECK */

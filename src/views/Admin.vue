@@ -30,6 +30,11 @@ import EditUsers from "@/components/Admin/EditUsers.vue";
 
 export default {
     name:'Admin',
+    metaInfo() {
+        return {
+            title: 'Админпанель'
+        }
+    },
     data(){
         return {
             current:'EditDatesWork',

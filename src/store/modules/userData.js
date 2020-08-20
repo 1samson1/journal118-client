@@ -8,10 +8,10 @@ export default {
                 })
                 .catch(()=> {})
         }, 
-        cicleCheckToken({dispatch},data){
-            dispatch('checkToken',data)
+        cicleCheckToken({dispatch}){
+            dispatch('checkToken')
             setInterval(() => {
-                dispatch('checkToken',data)
+                dispatch('checkToken')
             }, 30000);
         },
         checkToken({commit, dispatch, state}){
@@ -60,8 +60,17 @@ export default {
         data:null,
     },
     getters:{
+        isAdmin(state){
+            return state.data && (state.data.group_id === '1')
+        },
+        logined(state){
+            return state.data === null
+        },
         getUserData(state){
             return state.data
         },
+        getToken(state){
+            return state.token
+        }
     },
 }

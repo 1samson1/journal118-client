@@ -1,14 +1,15 @@
 <template>
     <div class="user-work">
         <div class="user-work-field">{{surname}} {{name}}</div>
-        <div class="user-work-field"><CheckBox trueValue="1" falseValue="0" :value="exist" @input="changeExist" /></div>
-        <div class="user-work-field"><CheckBox trueValue="1" falseValue="0" :value="miss" @input="changeMiss"/></div>              
-        <div class="user-work-field">{{miss_lessons}}</div>                
+        <div class="user-work-field"><CheckBox trueValue="1" falseValue="0" :value="exist" @input="changeExist" :center="true" /></div>
+        <div class="user-work-field"><CheckBox trueValue="1" falseValue="0" :value="miss" @input="changeMiss" :center="true"/></div>              
+        <div class="user-work-field"><MinusPlus :value="miss_lessons" @input="changeMissLessons" /></div>                
     </div>  
 </template>
 
 <script>
 import CheckBox from '@/components/CheckBox.vue'
+import MinusPlus from '@/components/MinusPlus.vue'
 import {mapMutations} from 'vuex'
 
 export default {
@@ -34,13 +35,16 @@ export default {
                 miss,
             })
         },
-        changeMissLessons(e){
-            console.log(e)
+        changeMissLessons(miss_lessons){
+            this.setUserMissLessons({
+                id:this.id,
+                miss_lessons,
+            })
         },
-        ...mapMutations(['setUserExist','setUserMiss']),
+        ...mapMutations(['setUserExist','setUserMiss','setUserMissLessons']),
     },
     components:{
-        CheckBox
+        CheckBox,MinusPlus
     }
 }
 </script>

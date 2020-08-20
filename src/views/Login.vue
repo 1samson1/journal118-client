@@ -13,7 +13,7 @@
                 </div>               
                 <CheckBox class="login-checkbox" v-model="onlyLogin">Чужой компьютер</CheckBox>                             
                 <div class="form-group">
-                    <input type="submit" class="form-button" value="Войти">
+                    <input type="submit" class="form-button fb-block" value="Войти">
                 </div>
             </form>  
         </div>         
@@ -26,6 +26,11 @@ import {mapActions,mapGetters} from 'vuex'
 
 export default {
     name:'Login',    
+    metaInfo() {
+        return {
+            title: 'Авторизация'
+        }
+    },    
     data(){
         return{
             login:'',

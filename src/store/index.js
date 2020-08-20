@@ -38,5 +38,5 @@ export default new Vuex.Store({
         Admin,
         DarkTheme,
         Journal
-    }
+    },    
 })

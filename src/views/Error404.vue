@@ -6,6 +6,17 @@
       
 </template>
 
+<script>
+export default {
+    name:'Error404',
+    metaInfo() {
+        return {
+            title: 'Страница не найдена!'
+        }
+    },
+}
+</script>
+
 <style scoped>
 .error{
     margin:0 0.5rem;      

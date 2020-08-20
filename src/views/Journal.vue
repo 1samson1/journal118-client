@@ -10,6 +10,12 @@ import DatesWork from "@/components/Journal/DatesWork.vue";
 import DutyBlackList from "@/components/Journal/DutyBlackList.vue";
 
 export default {
+    name:'Journal',
+    metaInfo() {
+        return {
+            title: 'Журнал'
+        }
+    },
     components: {
         DatesWork,DutyBlackList,
     },

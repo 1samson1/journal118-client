@@ -17,7 +17,7 @@
                 <template v-else>                        
                     <DropDown :darkTheme="darkTheme">
                         <template v-slot:label>{{userData.login}}</template>                        
-                        <router-link :to="{name:'admin'}">Админпанель</router-link>
+                        <router-link v-if="isAdmin" :to="{name:'admin'}">Админпанель</router-link>
                         <router-link :to="{name:'profile'}">Профиль</router-link>                        
                         <div @click="logout" >Выйти</div>
                     </DropDown>
@@ -43,6 +43,7 @@ export default {
     },
     computed:{
         ...mapGetters({
+            isAdmin:'isAdmin',
             darkTheme:'onDarkTheme',
             userData:'getUserData'
         })

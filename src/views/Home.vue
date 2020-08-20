@@ -5,6 +5,17 @@
     </div>
 </template>
 
+<script>
+export default {
+    name:'Home',
+    metaInfo() {
+        return {
+            title: 'Добро пожаловать в журнал!'
+        }
+    },
+}
+</script>
+
 <style scoped>
 .home {   
     margin:0 0.5rem;      
