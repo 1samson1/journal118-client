@@ -73,6 +73,7 @@ export default {
     user-select: none;
     padding: .75rem;
     border-bottom: 2px solid #777777; 
+    text-align: center;
 }
 
 .toggleList:hover{    

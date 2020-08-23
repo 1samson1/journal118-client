@@ -28,7 +28,7 @@ export default {
     flex-direction: row;
 }
 
-@media (max-width: 600px) {
+@media (max-width: 700px) {
     .journal{
         display: block;        
     }

@@ -1,27 +1,32 @@
 <template>
     <header>
-        <div class="menu-top">
+        <div class="menu-top">            
             <nav>
-                <router-link class="button link-page"  :to="{name:'home'}">Главная</router-link>
-                <router-link class="button link-page" :to="{name:'journal'}">Журнал</router-link>
+                <HamburgerMenu :darkTheme="darkTheme">                
+                    <router-link class="button link-page"  :to="{name:'home'}">Главная</router-link>
+                    <router-link class="button link-page" :to="{name:'journal'}">Журнал</router-link>
+                </HamburgerMenu>
             </nav>  
             <div style="margin:0 1rem">
-                    <input :checked="darkTheme" @change="changeTheme" type="checkbox" id="darkTheme" name="set-name" class="switch-input">
-                    <label for="darkTheme" class="switch-label">Dark mode </label>
+                <input :checked="darkTheme" @change="changeTheme" type="checkbox" id="darkTheme" name="set-name" class="switch-input">
+                <label for="darkTheme" class="switch-label">Dark mode </label>
             </div>     
-            <div class="login-reg">                
+            <div class="login-reg">
+                <HamburgerMenu :right="true" :darkTheme="darkTheme">   
+                <template slot="icon" slot-scope="el"><div class="user-icon" :class="{'user-icon-active':el.active,'darkUserIcon':!darkTheme}"></div></template>     
                 <template v-if="!userData">
                     <router-link class="button link-login"  :to="{name:'login'}">Вход</router-link>
                     <router-link class="button link-login" :to="{name:'reg'}">Регистрация</router-link>
                 </template>
                 <template v-else>                        
-                    <DropDown :darkTheme="darkTheme">
+                    <UserPanel :darkTheme="darkTheme">
                         <template v-slot:label>{{userData.login}}</template>                        
                         <router-link v-if="isAdmin" :to="{name:'admin'}">Админпанель</router-link>
                         <router-link :to="{name:'profile'}">Профиль</router-link>                        
                         <div @click="logout" >Выйти</div>
-                    </DropDown>
+                    </UserPanel>
                 </template>
+                </HamburgerMenu>
             </div>   
         </div>            
         <MAlerts/> 
@@ -30,11 +35,12 @@
 
 <script>
 import MAlerts from "@/components/MAlerts";
-import DropDown from "@/components/DropDown";
+import UserPanel from "@/components/UserPanel";
+import HamburgerMenu from "@/components/HamburgerMenu";
 import { mapActions, mapGetters } from "vuex"
 
 export default {    
-    name:'Header',      
+    name:'Header',    
     methods:{
         ...mapActions({
             changeTheme:'changeDarkTheme',
@@ -49,7 +55,7 @@ export default {
         })
     },
     components:{
-        MAlerts,DropDown
+        MAlerts,UserPanel,HamburgerMenu
     },    
 }
 </script>
@@ -60,22 +66,25 @@ header{
     box-shadow: 0 .125rem .25rem rgba(0,0,0,.075)!important;
 }
 
+nav{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 .link-page{
     color:#14A76C;  
 }
 
 .link-login{
-    color:#2E9CCA ;  
-
+    color:#2E9CCA ;
 }
 
-.menu-top{
+.menu-top {
     margin: 0 1rem;
     display: flex;
     justify-content: space-between;
     align-items: center;
     flex-wrap: wrap;
 }
-
-
 </style>

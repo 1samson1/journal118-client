@@ -12,9 +12,7 @@
                     <input v-model="pass" type="password" class="form-input" id="password" placeholder="Введите пароль" required>
                 </div>               
                 <CheckBox class="login-checkbox" v-model="onlyLogin">Чужой компьютер</CheckBox>                             
-                <div class="form-group">
-                    <input type="submit" class="form-button fb-block" value="Войти">
-                </div>
+                <MButton label="Войти" type="submit" font="1.3rem" :stretch="true" :loading="loading"/>
             </form>  
         </div>         
     </div>    
@@ -22,6 +20,7 @@
 
 <script>
 import CheckBox from '@/components/CheckBox.vue'
+import MButton from '@/components/MButton.vue'
 import {mapActions,mapGetters} from 'vuex'
 
 export default {
@@ -36,6 +35,7 @@ export default {
             login:'',
             pass:'',
             onlyLogin:false,
+            loading:false,
         }
     },
     mounted(){
@@ -45,13 +45,15 @@ export default {
     },
     methods:{        
         onLogin(){
+            this.loading = true
             this.auth({
                 body:{
                     login:this.login,
                     pass:this.pass,
                 },
                 onlyLogin:this.onlyLogin,
-                done:()=> this.$router.push({name:'home'})
+                done:()=> this.$router.push({name:'home'}),
+                lastly:()=> this.loading = false,
             })
         },
         ...mapActions({
@@ -62,7 +64,7 @@ export default {
         ...mapGetters(['logined'])
     },
     components:{
-        CheckBox,
+        CheckBox,MButton,
     }
 
 }
@@ -79,10 +81,11 @@ export default {
 }
 
 .form-login{
-    margin: 0 auto;    
+    margin: 0 auto;  
+    padding-bottom: 1rem;  
 }
 
-.form-login input{     
+.form-login input {     
     font-size:1.3rem ;      
 }
 

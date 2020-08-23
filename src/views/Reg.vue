@@ -26,16 +26,15 @@
                 <div class="form-group">
                     <label for="repassword">Подтверждение пароля</label>
                     <input v-model="repass" type="password" class="form-input" id="repassword" placeholder="Подтвердите пароль" required>
-                </div>                
-                <div class="form-group">
-                    <input type="submit" class="form-button fb-block" value="Зарегистрироваться">
                 </div>
+                <MButton label="Зарегистрироваться" type="submit" font="1.3rem" :stretch="true" :loading="loading"/>
             </form>            
         </div>         
     </div>    
 </template>
 
 <script>
+import MButton from '@/components/MButton.vue'
 import {mapActions,mapGetters} from 'vuex'
 
 export default {
@@ -53,6 +52,7 @@ export default {
             email:'',
             pass:'',
             repass:'',
+            loading:false,
         }
     },
     mounted(){
@@ -62,6 +62,7 @@ export default {
     },
     methods:{        
         onReg(){
+            this.loading = true
             this.reg({
                 body:{
                     name:this.name,
@@ -71,14 +72,18 @@ export default {
                     pass:this.pass,
                     repass:this.repass,
                 },                
-                done:()=> this.$router.push({name:'login'})
+                done:()=> this.$router.push({name:'login'}),
+                lastly:()=> this.loading = false,
             })
         },
         ...mapActions(['reg'])
     },    
     computed:{
         ...mapGetters(['logined'])
-    }   
+    },
+    components:{
+        MButton,
+    } 
 }
 </script>
 
@@ -89,11 +94,12 @@ export default {
     justify-content: center;
     align-items: center;  
     flex-wrap: wrap;
-    padding:0 1rem;
+    padding:0 1rem;    
 }
 
 .form-reg{
     margin: 0 auto;    
+    padding-bottom: 1rem;
 }
 
 .form-reg input{     

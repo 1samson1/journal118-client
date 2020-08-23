@@ -7,6 +7,7 @@ import VueMeta from 'vue-meta'
 import '@/assets/animate.min.css';
 import '@/components/date.js';
 import '@/assets/main.css';
+import '@/assets/scrollbar.css';
 
 
 Vue.config.productionTip = false;

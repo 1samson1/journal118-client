@@ -1,30 +1,45 @@
 <template>
-    <div id="app" :class="{ darkTheme: darkTheme }">        
-        <Header  />
-        <div class="content">
-            <transition name="fadePage">
-                <router-view />      
-            </transition>             
+    <div id="app" :class="{darkTheme: darkTheme }">
+        <Header />
+        <div class="content" :class="{ fixscroll: fixscroll}">
+            <transition
+                name="fadePage"
+                @before-enter="beforeEnter"
+                @after-leave="afterLeave"
+            >
+                <router-view />
+            </transition>
         </div>
-    </div>    
+    </div>
 </template>
 
 <script>
 import Header from "./components/Header.vue";
-import { mapActions, mapGetters } from "vuex"
+import { mapActions, mapGetters } from "vuex";
 
 export default {
-    name: "App",    
+    name: "App",
+    data() {
+        return {
+            fixscroll: false,
+        };
+    },
     mounted() {
-        this.cicleCheckToken()
+        this.cicleCheckToken();
     },
     methods: {
-        ...mapActions(['cicleCheckToken']),
-    }, 
-    computed:{
+        beforeEnter() {
+            this.fixscroll = true;
+        },
+        afterLeave() {
+            this.fixscroll = false;
+        },
+        ...mapActions(["cicleCheckToken"]),
+    },
+    computed: {
         ...mapGetters({
-            darkTheme:'onDarkTheme'
-        })
+            darkTheme: "onDarkTheme",
+        }),
     },
     components: {
         Header,
@@ -44,28 +59,34 @@ export default {
     overflow: hidden;
 }
 
-.full-height{
+.full-height {
     position: relative;
-    height: 100% !important;    
+    height: 100% !important;
 }
 
-.block-scroll{
-    position: absolute; 
-    left:0;
-    right:0;
-    top:0;
-    bottom:0;
+.fixscroll {
+    overflow-x: hidden !important;
+    overflow-y: hidden !important;
+    overflow: hidden !important;    
+}
+
+.block-scroll {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
     overflow-y: auto;
 }
 
-.content{
+.content {
     overflow-y: auto;
     flex-grow: 3;
     position: relative;
 }
 
-.wait-dev{
-    margin:auto
+.wait-dev {
+    margin: auto;
 }
 
 </style>

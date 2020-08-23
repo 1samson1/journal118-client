@@ -95,6 +95,7 @@ export default {
 }
 
 .toggleList{
+    text-align: center;
     cursor: pointer;
     user-select: none;
     padding: .75rem;

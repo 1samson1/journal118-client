@@ -95,7 +95,7 @@ select:focus{
     border-bottom: 1px solid #777777;
 }
 
-.form-input:focus,.form-input:hover{
+.form-input:focus{
     border-bottom: 1px solid #14a76c;
     outline: none;
 }
@@ -199,6 +199,60 @@ select:focus{
     width: 40%;
     text-align: center;
     padding:.9rem 0;
+}
+
+/*/////////// ICONS ////////////////*/
+.darkTheme .user-icon::before,.darkTheme .user-icon::after{
+    background-color: #FFF;
+}
+
+.user-icon {
+    position: relative;
+    width: 24px;
+    height: 3px;
+    background-color:transparent;
+}
+
+.user-icon::before {
+    position: absolute;
+    left: 7px;
+    top: -7px;
+    content: "";
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: #202020;
+    transition: transform 0.2s ease-in, top 0.2s linear 0.2s;
+}
+
+.user-icon::after {
+    position: absolute;
+    left: 4px;
+    top: 2px;
+    content: "";
+    width: 16px;
+    height: 7px;
+    border-radius: 50% 50% 0 0;
+    background-color: #202020;
+    transition: transform 0.2s ease-in, top 0.2s linear 0.2s;
+}
+
+
+.user-icon.user-icon-active::before,.user-icon.user-icon-active::after {
+    top: 0;
+    left: 0;
+    border-radius: 0;
+    width: 24px;
+    height: 3px;
+    transition: all 0.1s linear, transform 0.2s ease-in 0.2s;
+}
+
+.user-icon.user-icon-active::before{
+    transform: rotate(45deg);
+}
+
+.user-icon.user-icon-active::after {
+    transform: rotate(-45deg);    
 }
 
 /*/////////// ANIMATIONS ////////////*/

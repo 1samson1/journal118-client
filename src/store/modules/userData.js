@@ -1,12 +1,13 @@
 export default {
     actions:{  
-        reg({dispatch},{body,done}){            
+        reg({dispatch},{body,done,lastly}){            
             dispatch('sendQuery',{ url:'/api/reg.php',body,},{ root: true })
                 .then(()=> {
                     dispatch('setSucccess','Вы зарегистрированы')
                     done()
                 })
                 .catch(()=> {})
+                .finally(() => lastly())
         }, 
         cicleCheckToken({dispatch}){
             dispatch('checkToken')
@@ -25,7 +26,7 @@ export default {
             dispatch('setSucccess','Вы вышли из аккаунта')
             commit('removeData')
         },
-        login({dispatch, commit},{body,onlyLogin,done}) {       
+        login({dispatch, commit},{body,onlyLogin,done,lastly}) {       
             dispatch('sendQuery',{ url:'/api/login.php', body},{ root: true })
                 .then((success)=>{                
                     dispatch('setSucccess','Вы авторизованы')
@@ -34,6 +35,7 @@ export default {
                     done()
                 })
                 .catch(()=>{})
+                .finally(() => lastly())
         },       
     },
     mutations:{
