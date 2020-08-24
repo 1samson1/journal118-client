@@ -24,7 +24,7 @@ export default {
             fixscroll: false,
         };
     },
-    mounted() {
+    created() {
         this.cicleCheckToken();
     },
     methods: {

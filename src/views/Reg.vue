@@ -27,7 +27,7 @@
                     <label for="repassword">Подтверждение пароля</label>
                     <input v-model="repass" type="password" class="form-input" id="repassword" placeholder="Подтвердите пароль" required>
                 </div>
-                <MButton label="Зарегистрироваться" type="submit" font="1.3rem" :stretch="true" :loading="loading"/>
+                <MButton label="Зарегистрироваться" type="submit" style="font-size:1.3rem" :stretch="true" :loading="loading"/>
             </form>            
         </div>         
     </div>    
@@ -55,8 +55,15 @@ export default {
             loading:false,
         }
     },
+    watch:{
+        logined(newValue){
+            if(newValue){
+                this.$router.push({name:'home'});
+            }
+        }
+    },
     mounted(){
-        if(!this.logined){
+        if(this.logined){
             this.$router.push({name:'home'});
         }
     },

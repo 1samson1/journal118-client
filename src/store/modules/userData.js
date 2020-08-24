@@ -18,19 +18,19 @@ export default {
         checkToken({commit, dispatch, state}){
             if (state.token) {
                 dispatch('sendQuery',{ url:'/api/confirm.php',body:{token:state.token},},{ root: true })
-                    .then(success=> commit('setData',success))
-                    .catch(()=> commit('removeData'))
+                    .then(success=> commit('setUserData',success))
+                    .catch(()=> commit('removeUserData'))
             }                         
         }, 
         logout({commit,dispatch}){
+            commit('removeUserData')
             dispatch('setSucccess','Вы вышли из аккаунта')
-            commit('removeData')
         },
         login({dispatch, commit},{body,onlyLogin,done,lastly}) {       
             dispatch('sendQuery',{ url:'/api/login.php', body},{ root: true })
                 .then((success)=>{                
                     dispatch('setSucccess','Вы авторизованы')
-                    commit('setData',success.user)
+                    commit('setUserData',success.user)
                     commit('setToken',{token:success.token,onlyLogin})             
                     done()
                 })
@@ -39,8 +39,8 @@ export default {
         },       
     },
     mutations:{
-        setData(state,data){
-            state.data = data
+        setUserData(state,data){
+            state.userData = data
         },
         setToken(state,{token,onlyLogin}){
             if(onlyLogin)
@@ -50,26 +50,26 @@ export default {
 
             state.token = token
         },
-        removeData(state){
+        removeUserData(state){
             localStorage.removeItem('token')
             sessionStorage.removeItem('token')
             state.token = ''
-            state.data = null 
+            state.userData = null 
         }
     },
     state:{
         token:localStorage.token || sessionStorage.token || '',
-        data:null,
+        userData:null,
     },
     getters:{
         isAdmin(state){
-            return state.data && (state.data.group_id === '1')
+            return state.userData && (state.userData.group_id === '1')
         },
         logined(state){
-            return state.data === null
+            return state.userData !== null
         },
         getUserData(state){
-            return state.data
+            return state.userData
         },
         getToken(state){
             return state.token

@@ -6,7 +6,7 @@ export default {
                 .catch(()=>{})
                 .finally(()=> lastly())
         },
-        pullDatesWorkToday({dispatch,getters,state },{lastly}){
+        pullDatesWorkToday({dispatch, getters, state },{lastly}){
             dispatch('sendQuery',{ 
                 url:'/api/setDatesWork.php',
                 body:{
@@ -24,7 +24,7 @@ export default {
                 .catch(()=>{})
                 .finally(()=> lastly())
         },
-        genDutyList({commit, dispatch,getters },{count_duty,lastly}){
+        genDutyList({commit, dispatch, getters },{count_duty,lastly}){
             dispatch('sendQuery',{ 
                 url:'/api/genDutyList.php',
                 body:{
@@ -33,6 +33,24 @@ export default {
                 },
             },{ root: true })
                 .then(success=> commit('setDutyListToday',success))
+                .catch(()=>{})
+                .finally(()=> lastly())
+        },
+        fetchUsersAdmin({commit, dispatch },{lastly}){
+            dispatch('sendQuery',{ url:'/api/getUsersAdmin.php',body:null,},{ root: true })
+                .then(success=> commit('setUsersAdmin',success))
+                .catch(()=>{})
+                .finally(()=> lastly())
+        },
+        pullUsersAdmin({dispatch, getters, state },{lastly}){
+            dispatch('sendQuery',{ 
+                url:'/api/setUsersAdmin.php',
+                body:{
+                    token:getters.getToken,
+                    users:state.UsersAdmin,
+                },
+            },{ root: true })
+                .then(() => dispatch('setSucccess','Изменения сохранены!'))
                 .catch(()=>{})
                 .finally(()=> lastly())
         },
@@ -52,11 +70,18 @@ export default {
         },
         setDutyListToday(state,data){
             state.DutyListToday = data
-        }
+        },
+        setUsersAdmin(state,data){
+            state.UsersAdmin = data
+        },
+        setMissUser(state,data){
+            state.UsersAdmin[data.id].miss_user = data.miss_user
+        },
     },
     state:{
         DatesWorkToday:null,
         DutyListToday:null,
+        UsersAdmin:null,
     },
     getters:{
         getDatesWorkToday(state){
@@ -64,6 +89,9 @@ export default {
         },
         getDutyListToday(state){
             return state.DutyListToday
+        },
+        getUsersAdmin(state){
+            return state.UsersAdmin
         },
     },
 }

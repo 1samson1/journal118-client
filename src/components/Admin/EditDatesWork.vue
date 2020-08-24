@@ -20,13 +20,14 @@
                 :miss_lessons="userwork.miss_lessons"              
             />
             <div class="controls">
-                <input class="form-button" type="button" value="Сохранить" @click="saveDatesWorkToday">
+                <MButton style="font-size:1.2rem" label="Сохранить" @click="saveDatesWorkToday" />
             </div>
         </template>        
     </div>
 </template>
 
 <script>
+import MButton from '@/components/MButton.vue'
 import EditUserWork from "@/components/Admin/EditUserWork.vue";
 import Loader from "@/components/Loader.vue";
 import {mapActions,mapGetters} from "vuex"
@@ -60,7 +61,7 @@ export default {
         ...mapGetters(['getDatesWorkToday']),
     },
     components:{
-        Loader,EditUserWork
+        Loader,EditUserWork,MButton
     }
 }
 </script>
@@ -76,10 +77,6 @@ export default {
     width: 100%;
     padding: 1.2rem;
     background: #77777720;
-}
-
-.controls input{
-    font-size: 1.2rem;
 }
 
 .empty{

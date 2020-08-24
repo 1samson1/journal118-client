@@ -12,7 +12,7 @@
                     <input v-model="pass" type="password" class="form-input" id="password" placeholder="Введите пароль" required>
                 </div>               
                 <CheckBox class="login-checkbox" v-model="onlyLogin">Чужой компьютер</CheckBox>                             
-                <MButton label="Войти" type="submit" font="1.3rem" :stretch="true" :loading="loading"/>
+                <MButton label="Войти" type="submit" style="font-size:1.3rem" :stretch="true" :loading="loading"/>
             </form>  
         </div>         
     </div>    
@@ -38,8 +38,15 @@ export default {
             loading:false,
         }
     },
+    watch:{
+        logined(newValue){
+            if(newValue){
+                this.$router.push({name:'home'});
+            }
+        }
+    },
     mounted(){
-        if(!this.logined){
+        if(this.logined){
             this.$router.push({name:'home'});
         }
     },

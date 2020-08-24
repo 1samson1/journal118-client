@@ -1,12 +1,12 @@
 <template>
     <button 
-        :type="type"
         class="mbutton" 
 
-        :click="onClick"
-        :style="style"
+        :type="type"
         :class="{'mb-stretch':stretch}" 
         :disabled="disabled || loading"
+
+        @click="onClick"        
     >
         <div class="loading" v-show="loading"><div></div></div>
         <slot>{{label}}</slot>
@@ -36,18 +36,7 @@ export default {
         label:{
             type:String,
         },
-        font:{
-            type:String,
-            default:'1rem',
-        }
-    },
-    computed:{
-        style(){
-            return `
-                font-size:${this.font};
-            `
-        }
-    },
+    },   
     methods:{
         onClick(e){
             this.$emit('click', e);

@@ -56,8 +56,8 @@ export default {
         }       
     },
     watch:{
-        isAdmin(nevValue){
-            if(!nevValue){
+        isAdmin(newValue){
+            if(!newValue){
                 this.$router.push({name:'login'});
             }
         }
