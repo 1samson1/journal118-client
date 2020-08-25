@@ -1,6 +1,6 @@
 <template>    
     <div class="reg">
-        <div style="flex:500px 0 1;">
+        <div class="contur">
             <div class="title-page">Регистрация</div>
             <form class="form-reg" @submit.prevent='onReg'>                
                 <div class="form-group">
@@ -102,6 +102,12 @@ export default {
     align-items: center;  
     flex-wrap: wrap;
     padding:0 1rem;    
+}
+
+.contur{
+    background: #77777720;
+    flex:500px 0 1;
+    padding: 1rem;
 }
 
 .form-reg{

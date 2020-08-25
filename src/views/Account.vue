@@ -1,22 +1,8 @@
 <template>
     <div class="account">
-        <div style="flex:500px 0 1;">
-            <div class="title-page">Аккаунт</div>
-            <div class="togglesList">
-                <div class="toggleList" 
-                    v-for="tab of tabs"
-                    :key="tab.label + tab.component"
-                    :class="{active: current === tab.component }" 
-                    @click="current = tab.component"
-                >
-                    {{ tab.label }}
-                </div>
-            </div>
-            <div class="utils">   
-                <transition name="fadePage">             
-                <component :is="current"></component>    
-                </transition>                                   
-            </div>   
+        <div class="contur">            
+            <EditAccount />
+            <SecurityAccount />
         </div> 
     </div>
 </template>
@@ -32,22 +18,7 @@ export default {
         return {
             title: 'Аккаунт'
         }
-    },
-    data(){
-        return {
-            current:'EditAccount',
-            tabs:[
-                {
-                    label:'Изменить аккаунт',
-                    component:'EditAccount'
-                },                
-                {
-                    label:'Безопастность',
-                    component:'SecurityAccount'
-                },
-            ],
-        }       
-    },
+    },    
     watch:{
         logined(newValue){
             if(!newValue){
@@ -74,9 +45,15 @@ export default {
     height: 100%;
     display: flex;
     justify-content: center;
-    /* align-items: center;   */
+    align-items: center;  
     flex-wrap: wrap;
-    padding:0 1rem;    
+    padding:.5rem 1rem;    
+}
+
+.contur{
+    background: #77777720;
+    flex:600px 0 1;
+    padding: 1rem;
 }
 
 .utils{    

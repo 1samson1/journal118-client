@@ -1,7 +1,8 @@
 <template>
     <div class="security">
+        <div class="title-part">Безопасность</div>  
         <div class="form-group">
-            <label for="logout-all" style="padding-bottom:1rem">Завершить все сеансы кроме этого.</label>
+            <div class="label">Завершить все сеансы кроме текущего.</div>
             <MButton 
                 id="logout-all"
                 color="danger"
@@ -42,8 +43,15 @@ export default {
 </script>
 
 <style scoped>
-.security{
-    min-width: 500px;
-    padding: 1rem 0;
+
+.title-part{    
+    font-size: 1.1rem;
+    font-weight: bold;
+    text-align: center;
 }
+
+.label{
+    margin:.3rem .5rem;
+}
+
 </style>
