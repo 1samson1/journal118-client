@@ -22,7 +22,7 @@
                     <UserPanel :darkTheme="darkTheme">
                         <template v-slot:label>{{userData.login}}</template>                        
                         <router-link v-if="isAdmin" :to="{name:'admin'}">Админпанель</router-link>
-                        <router-link :to="{name:'profile'}">Профиль</router-link>                        
+                        <router-link :to="{name:'account'}">Аккаунт</router-link>                        
                         <div @click="logout" >Выйти</div>
                     </UserPanel>
                 </template>

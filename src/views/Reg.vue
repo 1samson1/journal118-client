@@ -4,28 +4,28 @@
             <div class="title-page">Регистрация</div>
             <form class="form-reg" @submit.prevent='onReg'>                
                 <div class="form-group">
-                    <label for="name">Имя</label>
-                    <input v-model="name" type="text" class="form-input" id="name" placeholder="Введите имя" required>
+                    <label for="reg-name">Имя</label>
+                    <input v-model="name" type="text" class="form-input" id="reg-name" placeholder="Введите имя" required>
                 </div>
                 <div class="form-group">
-                    <label for="surname">Фамилия</label>
-                    <input v-model="surname" type="text" class="form-input" id="surname" placeholder="Введите фамилию" required>
+                    <label for="reg-surname">Фамилия</label>
+                    <input v-model="surname" type="text" class="form-input" id="reg-surname" placeholder="Введите фамилию" required>
                 </div>
                 <div class="form-group">
-                    <label for="login">Логин</label>
-                    <input v-model="login" type="text" class="form-input" id="login" placeholder="Введите логин" required>
+                    <label for="reg-login">Логин</label>
+                    <input v-model="login" type="text" class="form-input" id="reg-login" placeholder="Введите логин" required>
                 </div>
                 <div class="form-group">
-                    <label for="email">E-mail</label>
-                    <input v-model="email" type="text" class="form-input" id="email" placeholder="Введите e-mail" required>
+                    <label for="reg-email">E-mail</label>
+                    <input v-model="email" type="text" class="form-input" id="reg-email" placeholder="Введите e-mail" required>
                 </div>
                 <div class="form-group">
-                    <label for="password">Пароль</label>
-                    <input v-model="pass" type="password" class="form-input" id="password" placeholder="Введите пароль" required>
+                    <label for="reg-password">Пароль</label>
+                    <input v-model="pass" type="password" class="form-input" id="reg-password" placeholder="Введите пароль" required>
                 </div>                
                 <div class="form-group">
-                    <label for="repassword">Подтверждение пароля</label>
-                    <input v-model="repass" type="password" class="form-input" id="repassword" placeholder="Подтвердите пароль" required>
+                    <label for="reg-repassword">Подтверждение пароля</label>
+                    <input v-model="repass" type="password" class="form-input" id="reg-repassword" placeholder="Подтвердите пароль" required>
                 </div>
                 <MButton label="Зарегистрироваться" type="submit" style="font-size:1.3rem" :stretch="true" :loading="loading"/>
             </form>            

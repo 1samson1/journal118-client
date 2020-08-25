@@ -3,7 +3,7 @@ import Router from 'vue-router'
 import Home from '@/views/Home'
 import Login from '@/views/Login'
 import Reg from '@/views/Reg'
-import Profile from '@/views/Profile'
+import Account from '@/views/Account'
 import Journal from '@/views/Journal'
 import Admin from '@/views/Admin'
 import Error404 from '@/views/Error404'
@@ -29,9 +29,9 @@ export default new Router({
             component: Reg
         },
         {
-            path:'/profile/',
-            name:'profile',
-            component: Profile
+            path:'/account/',
+            name:'account',
+            component: Account
         },
         {
             path:'/journal/',

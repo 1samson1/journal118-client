@@ -1,7 +1,8 @@
 <template>
     <div id="app" :class="{darkTheme: darkTheme }">
         <Header />
-        <div class="content" :class="{ fixscroll: fixscroll}">
+        <loader v-if="loading"/>
+        <div v-else class="content" :class="{ fixscroll: fixscroll}">
             <transition
                 name="fadePage"
                 @before-enter="beforeEnter"
@@ -15,6 +16,7 @@
 
 <script>
 import Header from "./components/Header.vue";
+import Loader from "@/components/Loader.vue";
 import { mapActions, mapGetters } from "vuex";
 
 export default {
@@ -39,10 +41,11 @@ export default {
     computed: {
         ...mapGetters({
             darkTheme: "onDarkTheme",
+            loading: "getloadingUserData",
         }),
     },
     components: {
-        Header,
+        Header,Loader
     },
 };
 </script>

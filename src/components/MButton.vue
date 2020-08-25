@@ -3,7 +3,7 @@
         class="mbutton" 
 
         :type="type"
-        :class="{'mb-stretch':stretch}" 
+        :class="classes" 
         :disabled="disabled || loading"
 
         @click="onClick"        
@@ -36,6 +36,18 @@ export default {
         label:{
             type:String,
         },
+        color:{
+            type:String,
+            default:'success'
+        }
+    },
+    computed: {
+        classes() {
+            return [
+                `mb-${this.color}`,
+                { 'mb-stretch': this.stretch },
+            ];
+        },
     },   
     methods:{
         onClick(e){
@@ -48,25 +60,37 @@ export default {
 <style scoped>
 
 .mbutton{    
-    padding: .4rem 3rem;
-    background: #14a76c;
+    padding: .4rem 3rem;    
     color:#FFF;
     border:none;
     cursor: pointer;  
     position: relative;  
 }
 
+.mb-success{
+    background: #14a76c;
+}
+.mb-success:hover, .mb-success:focus{
+    background: #14a76cec;    
+}
+.mb-success:disabled{
+    background: #14a76cb9;
+}
+
+.mb-danger{
+    background: #dc3545;
+}
+.mb-danger:hover, .mb-danger:focus{
+    background: #dc3545ec;    
+}
+.mb-danger:disabled{
+    background: #dc3545b9;
+}
+
 .mb-stretch{
     width: 100%;
 }
 
-.mbutton:hover, .mbutton:focus{
-    background: #14a76cec;    
-}
-
-.mbutton:disabled{
-    background: #14a76cb9;
-}
 
 .loading{    
     height: 0.25rem;

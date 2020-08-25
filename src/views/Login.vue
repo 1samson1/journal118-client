@@ -4,12 +4,12 @@
             <div class="title-page">Авторизация</div>
             <form class="form-login" @submit.prevent='onLogin'>                
                 <div class="form-group">
-                    <label for="login">Логин</label>
-                    <input v-model="login" type="text" class="form-input" id="login" placeholder="Введите логин" required>
+                    <label for="log-login">Логин</label>
+                    <input v-model="login" type="text" class="form-input" id="log-login" placeholder="Введите логин" required>
                 </div>
                 <div class="form-group">
-                    <label for="password">Пароль</label>
-                    <input v-model="pass" type="password" class="form-input" id="password" placeholder="Введите пароль" required>
+                    <label for="log-password">Пароль</label>
+                    <input v-model="pass" type="password" class="form-input" id="log-password" placeholder="Введите пароль" required>
                 </div>               
                 <CheckBox class="login-checkbox" v-model="onlyLogin">Чужой компьютер</CheckBox>                             
                 <MButton label="Войти" type="submit" style="font-size:1.3rem" :stretch="true" :loading="loading"/>
@@ -40,6 +40,7 @@ export default {
     },
     watch:{
         logined(newValue){
+            console.log("gg");
             if(newValue){
                 this.$router.push({name:'home'});
             }
