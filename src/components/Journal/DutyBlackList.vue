@@ -60,6 +60,7 @@ export default {
 .lists{
     flex-grow: 3;
     position: relative;
+    overflow: hidden;
 }
 
 .togglesList{

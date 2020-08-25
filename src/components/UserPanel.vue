@@ -49,7 +49,7 @@ export default {
     padding: 1rem;
     background-color: #e7e7e7;
     border: 1px solid transparent;
-    border-radius: 5px;
+    /* border-radius: 5px; */
     color: #000;
     box-sizing: border-box;
 }
@@ -60,13 +60,13 @@ export default {
 }
 
 .options {
-    z-index: 2;
+    z-index: 3;
     transition: opacity 0.5s ease;
     position: absolute;
     top: calc(100% + 5px);
     right: 0;
     background-color: #e7e7e7;
-    border-radius: 5px;
+    /* border-radius: 5px; */
 }
 
 .options > * {
