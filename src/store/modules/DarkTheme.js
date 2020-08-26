@@ -11,7 +11,7 @@ export default {
         }
     },
     state:{
-        darkTheme:localStorage.darkTheme || 'false'
+        darkTheme:localStorage.darkTheme || 'true'
     },
     getters:{
         onDarkTheme(state){
