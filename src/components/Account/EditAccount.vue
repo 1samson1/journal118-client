@@ -7,7 +7,7 @@
         <form class="form-update" @submit.prevent='onUpdate'> 
             <div class="form-group">
                 <label for="upd-group-name">Группа</label>
-                <div id="upd-group-name" class="form-disebled">{{group}}</div>
+                <div id="upd-group-name" class="form-disabled">{{group}}</div>
             </div>  
             <div class="form-inline">
                 <div class="form-group">
@@ -31,7 +31,7 @@
             </div>
             <div class="form-group">
                 <label for="upd-miss-user">Пропускать при генерации дежурных</label>
-                <div id="upd-miss-user" class="form-disebled">{{miss_user | yesNo}}</div>
+                <div id="upd-miss-user" class="form-disabled">{{miss_user | yesNo}}</div>
             </div>    
             <div class="title-part">Смена пароля</div>    
             <div class="form-group">

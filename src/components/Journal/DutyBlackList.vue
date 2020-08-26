@@ -15,14 +15,26 @@
                 name="fadeList"
                 enter-active-class="animate__animated animate__fadeIn"
                 leave-active-class="animate__animated animate__fadeOut"
+                @before-enter="beforeEnter"
+                @after-leave="afterLeave"
             >
-                <component :is="current"></component>   
+                <component ref="list" :is="current" @loading="onLoad"></component>   
             </transition>                         
-        </div>                  
+        </div>   
+        <MButton 
+            class="btm-update"
+            style="font-size:1.2rem"
+            label="Обновить"
+            :stretch="true" 
+            :loading="loading"            
+            :disabled="disabled"            
+            @click="update"
+        />               
     </div>
 </template>
 
 <script>
+import MButton from "@/components/MButton.vue";
 import DutyList from "./DutyList.vue";
 import BlackList from "./BlackList.vue";
 
@@ -41,10 +53,26 @@ export default {
                     component:'BlackList'
                 }
             ],
+            loading:false,
+            disabled:false,
         }       
     },
+    methods:{
+        beforeEnter() {
+            this.disabled = true;
+        },
+        afterLeave() {
+            this.disabled = false;
+        },
+        onLoad(loading){
+            this.loading = loading
+        },
+        update(){
+            this.$refs.list.update()
+        }
+    },
     components:{
-        DutyList,BlackList,
+        DutyList,BlackList,MButton
     }
 }
 </script>
@@ -59,8 +87,7 @@ export default {
 
 .lists{
     flex-grow: 3;
-    position: relative;
-    overflow: hidden;
+    position: relative;    
 }
 
 .togglesList{
@@ -86,4 +113,9 @@ export default {
     border-color:#14a76c;
     color:#14a76c;
 }
+
+.btm-update:focus{
+    outline: none !important;
+}
+
 </style>

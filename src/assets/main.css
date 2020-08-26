@@ -95,7 +95,7 @@ select:focus{
     border-bottom: 1px solid #777777;
 }
 
-.form-disebled{
+.form-disabled{
     background:#77777710;
     width: 100%;
     padding: .3rem;
