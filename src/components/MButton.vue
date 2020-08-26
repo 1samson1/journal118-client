@@ -65,6 +65,7 @@ export default {
     border:none;
     cursor: pointer;  
     position: relative;  
+    user-select: none;
 }
 
 .mb-success{

@@ -1,16 +1,18 @@
 <template>
-    <div id="app" :class="{darkTheme: darkTheme }">
-        <Header />
+    <div id="app" :class="{darkTheme: darkTheme }">        
         <loader v-if="loading"/>
-        <div v-else class="content" :class="{ fixscroll: fixscroll}">
-            <transition
-                name="fadePage"
-                @before-enter="beforeEnter"
-                @after-leave="afterLeave"
-            >
-                <router-view />
-            </transition>
-        </div>
+        <template v-else>
+            <Header />
+            <div class="content" :class="{ fixscroll: fixscroll}">
+                <transition
+                    name="fadePage"
+                    @before-enter="beforeEnter"
+                    @after-leave="afterLeave"
+                >
+                    <router-view />
+                </transition>
+            </div>
+        </template>
     </div>
 </template>
 

@@ -106,8 +106,7 @@ export default {
     position: relative;
     width: 24px;
     height: 3px;
-    background-color: #fff;
-    transition: background-color 0.2s ease-in,
+    background-color: #fff;    
 }
 
 .menu-icon::before {

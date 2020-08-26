@@ -29,7 +29,7 @@ export default new Vuex.Store({
         },
     },
     state:{
-        domain: "http://journal118",
+        domain: "http://journal118.atwebpages.com",
     },
 
     modules:{

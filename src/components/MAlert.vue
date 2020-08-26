@@ -68,7 +68,7 @@ export default {
 }
 
 .success{
-    background-color: #28a745;;
+    background-color: #14a76c;
 }
 
 .close-m-alert{

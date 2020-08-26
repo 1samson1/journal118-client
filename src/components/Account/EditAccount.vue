@@ -130,7 +130,10 @@ export default {
 }
 
 .account-foto{
+    border-radius: 50%;
+    background: #777777;
     width: 72px;
+    height: 72px;
 }
 
 .account-story{

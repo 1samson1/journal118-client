@@ -14,7 +14,7 @@ export default {
                 .finally(() => state.loadingUserData = false)
             setInterval(() => {
                 dispatch('checkToken')
-            }, 30000);
+            }, 120000);
         },
         checkToken({commit, dispatch, state}){
             if (state.token) {
