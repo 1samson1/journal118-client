@@ -67,7 +67,9 @@ export default {
         display: block;        
     }
     .changeScroll{
-        display: block;
+        display: flex;
+        justify-content: center;
+        align-items: center;
         position: fixed;
         left: .5rem;
         bottom:2.5rem;
@@ -83,12 +85,8 @@ export default {
     }
 
     .changeScroll svg{
-        width: 75%;
-        height: 75%;
-        position: absolute;
-        left: 50%;
-        top: 50%;
-        transform: translate(-50%,-50%);
+        width: 65%;
+        height: 65%;
     }
 }
 </style>
