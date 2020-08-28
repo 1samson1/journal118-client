@@ -3,7 +3,7 @@
         <div class="body-duty-list">
             <form class="generate" @submit.prevent="onGenerate">                         
                 <MinusPlus v-model="count_duty" :minValue="1" />
-                <MButton type="submit" style="font-size:1.2rem" label="Сгенерировать" :loading="loading" />
+                <MButton class="gen-button" type="submit" label="Сгенерировать" :loading="loading" />
             </form>
             <Loader :center="false" class="loader" v-if="loading"/>
             <div class="empty" v-else-if="!getDutyListToday">Список дежурных на сегодня пуст!</div> 
@@ -85,8 +85,9 @@ export default {
     font-size: 2rem;    
 }
 
-.generate input{
-    font-size: 1.2rem;
+.gen-button{
+    font-size:1.2rem;
+    padding: .4rem 2rem !important;
 }
 
 .dutyList{
