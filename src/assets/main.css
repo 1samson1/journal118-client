@@ -1,6 +1,17 @@
 /*/////////// GLOBAL CLASSES APP ////////////*/
-*{
+*,
+*::before,
+*::after {
     box-sizing: border-box;
+}
+
+html {
+    font-size: 100%;
+}
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #FFF;
 }
 
 .darkThemeText {
