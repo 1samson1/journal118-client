@@ -5,6 +5,7 @@
         <template v-else>
             <div class="user-work-header">
                 <div class="user-work-field">Студент</div>                
+                <div class="user-work-field">Группа</div>                
                 <div class="user-work-field">Пропускать при генерации</div>                
             </div>
             <EditUser 
@@ -12,6 +13,7 @@
                 :key="i" 
                 :id="i"            
                 :surname="user.surname"
+                :group_name="user.group_name"
                 :name="user.name"
                 :miss_user="user.miss_user"              
             />
