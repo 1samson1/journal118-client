@@ -1,5 +1,5 @@
 <template>
-    <div class="admin">
+    <div class="admin block-scroll">
         <div class="date"></div>
         <div class="togglesList">
             <div class="toggleList" 
@@ -79,8 +79,7 @@ export default {
 <style scoped>
 .admin{
     display: flex;    
-    flex-direction: column;  
-    height: 100%;     
+    flex-direction: column;        
 }
 
 .utils{

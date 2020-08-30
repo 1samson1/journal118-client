@@ -1,5 +1,5 @@
 <template>    
-    <div class="login">
+    <div class="login block-scroll">
         <div class="contur">
             <div class="title-page">Авторизация</div>
             <form class="form-login" @submit.prevent='onLogin'>                
@@ -79,8 +79,7 @@ export default {
 </script>
 
 <style scoped>
-.login{
-    height: 100%;
+.login{    
     display: flex;
     justify-content: center;
     align-items: center;  

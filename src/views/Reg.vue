@@ -1,5 +1,5 @@
 <template>    
-    <div class="reg">
+    <div class="reg block-scroll">
         <div class="contur">
             <div class="title-page">Регистрация</div>
             <form class="form-reg" @submit.prevent='onReg'>                
@@ -96,7 +96,6 @@ export default {
 
 <style scoped>
 .reg{   
-    height: 100%; 
     display: flex;
     justify-content: center;
     align-items: center;  

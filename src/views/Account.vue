@@ -1,5 +1,5 @@
 <template>
-    <div class="account">
+    <div class="account block-scroll">
         <div class="contur">            
             <EditAccount />
             <SecurityAccount />
@@ -41,8 +41,7 @@ export default {
 </script>
 
 <style scoped>
-.account{
-    height: 100%;
+.account{    
     display: flex;
     justify-content: center;
     align-items: center;  

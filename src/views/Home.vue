@@ -1,5 +1,5 @@
 <template>
-    <div class="home">
+    <div class="home block-scroll">
         <div class="title-page">Добро пожаловать в журнал!</div>
         <div class="copyright">Journal118 &copy; SAMSON 2020</div>  
     </div>
@@ -21,8 +21,7 @@ export default {
     margin:0 0.5rem;      
     display: flex;
     justify-content: center;
-    align-items: center;  
-    height: 100%;
+    align-items: center;
 }
 .copyright {
     position: absolute;
