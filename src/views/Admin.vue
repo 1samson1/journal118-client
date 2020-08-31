@@ -79,7 +79,8 @@ export default {
 <style scoped>
 .admin{
     display: flex;    
-    flex-direction: column;        
+    flex-direction: column;
+    overflow-x: hidden !important;        
 }
 
 .utils{
