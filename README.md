@@ -1,4 +1,5 @@
-# journal118
+# Journal118-client
+this repository is the frontend for the journal.
 
 ## Project setup
 ```
