@@ -1,4 +1,4 @@
-import Vue from "vue";
+import { createApp } from "vue";
 import App from "@/App.vue";
 import router from "@/router";
 import store from "@/store";
@@ -10,12 +10,10 @@ import '@/assets/main.css';
 import '@/assets/scrollbar.css';
 
 
-Vue.config.productionTip = false;
+const app = createApp(App)
 
-Vue.use(VueMeta)
+app.use(store)
+app.use(router)
+app.use(VueMeta)
 
-new Vue({    
-    store,
-    router,
-    render: (h) => h(App),
-}).$mount("#app");
+app.mount('#app')

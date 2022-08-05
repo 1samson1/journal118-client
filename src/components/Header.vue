@@ -34,9 +34,9 @@
 </template>
 
 <script>
-import MAlerts from "@/components/MAlerts";
-import UserPanel from "@/components/UserPanel";
-import HamburgerMenu from "@/components/HamburgerMenu";
+import MAlerts from "@/components/MAlerts.vue";
+import UserPanel from "@/components/UserPanel.vue";
+import HamburgerMenu from "@/components/HamburgerMenu.vue";
 import { mapActions, mapGetters } from "vuex"
 
 export default {    

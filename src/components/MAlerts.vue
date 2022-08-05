@@ -13,7 +13,7 @@
 </template>
 
 <script>
-import MAlert from "@/components/MAlert";
+import MAlert from "@/components/MAlert.vue";
 import {mapActions , mapGetters} from "vuex"
 
 export default {    
