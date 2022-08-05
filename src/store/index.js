@@ -27,7 +27,7 @@ export default new Vuex.Store({
         },
     },
     state:{
-        domain: "http://journal118", //This server domain
+        domain: "http://192.168.0.56:5555", //This server domain
     },
 
     modules:{

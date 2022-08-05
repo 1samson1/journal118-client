@@ -2,7 +2,7 @@ import { createApp } from "vue";
 import App from "@/App.vue";
 import router from "@/router";
 import store from "@/store";
-import VueMeta from 'vue-meta'
+import { createMetaManager } from 'vue-meta'
 //import '@/assets/bootstrap.min.css';
 import '@/assets/animate.min.css';
 import '@/components/date.js';
@@ -14,6 +14,6 @@ const app = createApp(App)
 
 app.use(store)
 app.use(router)
-app.use(VueMeta)
+app.use(createMetaManager())
 
 app.mount('#app')

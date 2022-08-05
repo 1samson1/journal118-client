@@ -1,5 +1,5 @@
 <template>
-    <option :value="id">{{date | getDate}}</option>
+    <option :value="id">{{getDate}}</option>
 </template>
 
 <script>
@@ -9,11 +9,11 @@ export default {
         id:Number,
         date:String,
     },
-    filters:{
+    computed:{
         getDate(date){
-            return new Date(parseInt(date +'000')).format('dd.mm.yyyy')
+            return new Date(parseInt(this.date +'000')).format('dd.mm.yyyy')
         },
-    },
+    }
 }
 </script>
 

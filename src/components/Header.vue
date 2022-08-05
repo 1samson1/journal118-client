@@ -13,7 +13,7 @@
             </div>     
             <div class="login-reg">
                 <HamburgerMenu :right="true" :darkTheme="darkTheme">   
-                <template slot="icon" slot-scope="el"><div class="user-icon" :class="{'user-icon-active':el.active,'darkUserIcon':!darkTheme}"></div></template>     
+                <template v-slot:icon="el"><div class="user-icon" :class="{'user-icon-active':el.active,'darkUserIcon':!darkTheme}"></div></template>     
                 <template v-if="!userData">
                     <router-link class="button link-login"  :to="{name:'login'}">Вход</router-link>
                     <router-link class="button link-login" :to="{name:'reg'}">Регистрация</router-link>

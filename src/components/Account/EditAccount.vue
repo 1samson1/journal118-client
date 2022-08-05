@@ -31,7 +31,7 @@
             </div>
             <div class="form-group">
                 <label for="upd-miss-user">Пропускать при генерации дежурных</label>
-                <div id="upd-miss-user" class="form-disabled">{{miss_user | yesNo}}</div>
+                <div id="upd-miss-user" class="form-disabled">{{missYesNo}}</div>
             </div>    
             <div class="title-part">Смена пароля</div>    
             <div class="form-group">
@@ -103,12 +103,10 @@ export default {
         ...mapActions(['editProfile'])
     },
     computed:{
-        ...mapGetters(['getUserData'])
-    },
-    filters:{
-        yesNo(bool){
-            return bool === '1'?'Да':'Нет'
+        missYesNo(){
+            return this.miss_user === '1'?'Да':'Нет'
         },
+        ...mapGetters(['getUserData']),
     },
     components:{
         MButton,
