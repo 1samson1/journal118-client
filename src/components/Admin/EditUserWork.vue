@@ -23,16 +23,20 @@ export default {
         miss_lessons:String
     }, 
     methods:{
-        changeExist(exist){
+        changeExist(){
+            const value = !this.exist? "1": "0"
+
             this.setUserExist({
                 id:this.id,
-                exist,
+                exist:value,
             })
         },
-        changeMiss(miss){
+        changeMiss(){
+            const value = !this.miss? "1": "0"
+            
             this.setUserMiss({
                 id:this.id,
-                miss,
+                miss:value,
             })
         },
         changeMissLessons(miss_lessons){
